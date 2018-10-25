@@ -39,4 +39,12 @@ public class UserDaoImp extends BaseDAO implements UserDao {
         session.close();//改
         return null;
     }
+
+    public void saveUser(User user) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(user);
+        transaction.commit();
+        session.close();
+    }
 }
