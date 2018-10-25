@@ -1,12 +1,21 @@
 package service.serviceImp;
 
 import dao.UserDao;
-import dao.daoImp.UserDaoImp;
 import model.User;
 import service.UserService;
 
 public class UserServiceImp implements UserService {
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     private UserDao userDao;
+
     public User validateUser(String username, String password) {
         return userDao.validate(username,password);
     }
