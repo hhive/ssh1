@@ -14,6 +14,24 @@ public class Kcb {
     private Integer xs;
     private Integer xf;
 
+    /** default constructor */
+    public Kcb() {
+    }
+
+    /** minimal constructor */
+    public Kcb(String kch) {
+        this.kch = kch;
+    }
+
+    /** full constructor */
+    public Kcb(String kch, String kcm, Short kxxq, Integer xs, Integer xf) {
+        this.kch = kch;
+        this.kcm = kcm;
+        this.kxxq = kxxq;
+        this.xs = xs;
+        this.xf = xf;
+    }
+
     @Id
     @Column(name = "kch")
     public String getKch() {

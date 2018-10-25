@@ -13,6 +13,22 @@ public class Zyb {
     private Integer rs;
     private String fdy;
 
+    /** default constructor */
+    public Zyb() {
+    }
+
+    /** minimal constructor */
+    public Zyb(String zym) {
+        this.zym = zym;
+    }
+
+    /** full constructor */
+    public Zyb(String zym, Integer rs, String fdy) {
+        this.zym = zym;
+        this.rs = rs;
+        this.fdy = fdy;
+    }
+
     @Id
     @Column(name = "id")
     public int getId() {
