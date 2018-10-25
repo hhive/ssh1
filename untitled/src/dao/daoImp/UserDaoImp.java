@@ -40,12 +40,16 @@ public class UserDaoImp extends BaseDAO implements UserDao {
         return null;
     }
 
-    public void saveUser(User user) {
+    public boolean saveUser(User user) {
         System.out.println("saveUser:" + user.getUsername());
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(user);
-        transaction.commit();
-        session.close();
+        if (validate(user.getUsername(),user.getPassword()) == null) {
+            Session session = getSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(user);
+            transaction.commit();
+            session.close();
+            return true;
+        }
+        return false;
     }
 }

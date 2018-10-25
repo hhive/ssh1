@@ -20,7 +20,9 @@ public class UserServiceImp implements UserService {
         return userDao.validate(username,password);
     }
     public User registerUser(User user) {
-        userDao.saveUser(user);
-        return validateUser(user.getUsername(),user.getPassword());
+        if (userDao.saveUser(user)) {
+            return validateUser(user.getUsername(),user.getPassword());
+        }
+       return null;
     }
 }

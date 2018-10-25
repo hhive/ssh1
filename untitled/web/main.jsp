@@ -10,7 +10,9 @@
 		图书管理系统
 	</h1>
 	<p>
-		<s:set name="user" value="#session['user']"/>
+		<%--<s:property value="user.username"/>--%>
+		<s:set name="user" value="#session.user"/>
+			<%--<s:set name="user" value="#session['user']"/>--%>
 		当前用户: <s:property value="#user.username"/>[<a href="logout.action"
 													onclick="if(!confirm('确定注销吗'))return false;else return true;">注销</a>]
 		<%--<s:property value="#session.user.username"/><br>--%>
