@@ -6,7 +6,7 @@
 
 <struts>
     <package name="default" extends="struts-default">
-        <action name="login" class="login" method="login">
+        <action name="login" class="login">
             <result name="success">main.jsp</result>
             <result name="error">index.jsp</result>
         </action>

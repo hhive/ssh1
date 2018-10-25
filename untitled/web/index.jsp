@@ -11,11 +11,11 @@
 <head><title>登录</title></head>
 <body>
 <s:form action="login" method="post">
-  姓名：<input type="text" name="username" size="20" /><br>
+  姓名：<input type="text" name="user.username" size="20" /><br>
   <s:fielderror>
     <s:param>username</s:param>
   </s:fielderror>
-  密码：<input type="password" name="password" size="20" /><br>
+  密码：<input type="password" name="user.password" size="20" /><br>
   <s:fielderror>
     <s:param>password</s:param>
   </s:fielderror>
