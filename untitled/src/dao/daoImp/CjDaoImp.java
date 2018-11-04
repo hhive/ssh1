@@ -2,7 +2,6 @@ package dao.daoImp;
 
 import dao.BaseDAO;
 import dao.CjDao;
-import model.Cjb;
 import model.CjbId;
 import org.hibernate.Query;
 import org.hibernate.Session;

@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,7 +9,7 @@ import java.util.Objects;
 public class Xsb {
     private String xh;
     private String xm;
-    private Object xb;
+    private String xb;
     private String cssj;
     private Integer zxf;
     private String bz;
@@ -24,7 +21,7 @@ public class Xsb {
     }
 
     /** minimal constructor */
-    public Xsb(String xh, String xm, Short xb) {//
+    public Xsb(String xh, String xm, String xb) {//
         this.xh = xh;
         this.xm = xm;
         this.xb = xb;
@@ -32,7 +29,7 @@ public class Xsb {
     }
 
     /** full constructor */
-    public Xsb(String xh, String xm, Short xb, String cssj,//
+    public Xsb(String xh, String xm, String xb, String cssj,//
                Integer zxf, String bz, byte[] zp, Zyb zyb) {//
         this.xh = xh;
         this.xm = xm;
@@ -66,11 +63,11 @@ public class Xsb {
 
     @Basic
     @Column(name = "xb")
-    public Object getXb() {
+    public String getXb() {
         return xb;
     }
 
-    public void setXb(Object xb) {
+    public void setXb(String xb) {
         this.xb = xb;
     }
 
@@ -135,11 +132,13 @@ public class Xsb {
         return result;
     }
 
-//    public Zyb getZyb(){
-//        return this.zyb;
-//    }
-//
-//    public void setZyb(Zyb zyb){
-//        this.zyb = zyb;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "zy_id")//外键
+    public Zyb getZyb(){
+        return this.zyb;
+    }
+
+    public void setZyb(Zyb zyb){
+        this.zyb = zyb;
+    }
 }

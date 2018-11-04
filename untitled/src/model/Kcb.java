@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Kcb {
     private String kch;
     private String kcm;
-    private Object kxxq;
+    private String kxxq;
     private Integer xs;
     private Integer xf;
 
@@ -24,7 +24,7 @@ public class Kcb {
     }
 
     /** full constructor */
-    public Kcb(String kch, String kcm, Short kxxq, Integer xs, Integer xf) {
+    public Kcb(String kch, String kcm, String kxxq, Integer xs, Integer xf) {
         this.kch = kch;
         this.kcm = kcm;
         this.kxxq = kxxq;
@@ -54,11 +54,11 @@ public class Kcb {
 
     @Basic
     @Column(name = "kxxq")
-    public Object getKxxq() {
+    public String getKxxq() {
         return kxxq;
     }
 
-    public void setKxxq(Object kxxq) {
+    public void setKxxq(String kxxq) {
         this.kxxq = kxxq;
     }
 

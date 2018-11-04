@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost:3306/webtest?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/xscjgl?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8"></property>
         <property name="username" value="root"/>
         <property name="password" value="8888"/>
     </bean>
@@ -45,15 +45,38 @@
             <ref bean="sessionFactory"/>
         </property>
     </bean>
-    <bean id="userDAOImp" class="dao.daoImp.UserDaoImp" parent="baseDAO"/>
 
-    <bean id="userServiceImp" class="service.serviceImp.UserServiceImp">
-        <property name="userDao" ref="userDAOImp"/>
+    <bean id="dlDao" class="dao.daoImp.DlDaoImp" parent="baseDAO"/>
+    <bean id="dlService" class="service.serviceImp.DlServiceManage">
+        <property name="dlDao" ref="dlDao"/>
+    </bean>
+    <bean id="dl" class="action.DlAction">
+        <property name="dlService" ref="dlService"/>
     </bean>
 
-    <bean id="login" class="action.LoginAction">
-        <property name="userService">
-            <ref bean="userServiceImp"/>
-        </property>
+    <bean id="xsDao" class="dao.daoImp.XsDaoImp" parent="baseDAO"/>
+    <bean id="zyDao" class="dao.daoImp.ZyDaoImp" parent="baseDAO"/>
+    <bean id="xsService" class="service.serviceImp.XsServiceManage">
+        <property name="xsDao" ref="xsDao"/>
     </bean>
+    <bean id="zyService" class="service.serviceImp.ZyServiceManage">
+        <property name="zyDao" ref="zyDao"/>
+    </bean>
+    <bean id="xs" class="action.XsAction">
+        <property name="xsService" ref="xsService"/>
+        <property name="zyService" ref="zyService"/>
+    </bean>
+    <bean id="kcDao" class="dao.daoImp.KcDaoImp" parent="baseDAO"/>
+    <bean id="cjDao" class="dao.daoImp.CjDaoImp" parent="baseDAO"/>
+    <bean id="kcService" class="service.serviceImp.KcServiceManage">
+        <property name="kcDao" ref="kcDao"/>
+    </bean>
+    <bean id="cjService" class="service.serviceImp.CjServiceManage">
+        <property name="cjDao" ref="cjDao"/>
+    </bean>
+    <bean id="cj" class="action.CjAction">
+        <property name="xsService" ref="xsService"/>
+        <property name="kcService" ref="kcService"/>
+        <property name="cjService" ref="cjService"/>
+     </bean>
 </beans>

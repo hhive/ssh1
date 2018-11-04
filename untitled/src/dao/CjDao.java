@@ -1,5 +1,4 @@
 package dao;
-import model.Cjb;
 
 import java.util.*;
 

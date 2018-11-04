@@ -1,12 +1,9 @@
 package service.serviceImp;
 
-
-
 import dao.CjDao;
 import dao.XsDao;
 import model.Xsb;
 import service.XsService;
-
 import java.util.List;
 
 public class XsServiceManage implements XsService {

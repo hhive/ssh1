@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.Cjb" table="cjb" schema="xscjgl">
+        <composite-id mapped="true" class="model.CjbPK">
+            <key-property name="xh" column="xh"/>
+            <key-property name="kch" column="kch"/>
+        </composite-id>
+        <property name="cj" column="cj"/>
+        <property name="xf" column="xf"/>
+    </class>
+</hibernate-mapping>

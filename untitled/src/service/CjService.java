@@ -1,8 +1,6 @@
 package service;
 
 
-import model.Cjb;
-
 import java.util.List;
 
 public interface CjService {

@@ -1,34 +1,16 @@
 package model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@IdClass(CjbPK.class)
 public class Cjb {
-    private CjbId id;
     private String xh;
     private String kch;
     private Integer cj;
     private Integer xf;
 
-    /** default constructor */
-    public Cjb() {
-    }
-
-    /** minimal constructor */
-    public Cjb(CjbId id) {
-        this.id = id;
-    }
-
-    /** full constructor */
-    public Cjb(CjbId id, Integer cj, Integer xf) {
-        this.id = id;
-        this.cj = cj;
-        this.xf = xf;
-    }
     @Id
     @Column(name = "xh")
     public String getXh() {
@@ -39,7 +21,7 @@ public class Cjb {
         this.xh = xh;
     }
 
-    @Basic
+    @Id
     @Column(name = "kch")
     public String getKch() {
         return kch;
