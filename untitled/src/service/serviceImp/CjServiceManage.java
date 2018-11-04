@@ -1,6 +1,7 @@
 package service.serviceImp;
 
 import dao.CjDao;
+import model.Cjb;
 import service.CjService;
 
 import java.util.List;

@@ -1,34 +1,31 @@
 package model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-@IdClass(CjbPK.class)
 public class Cjb {
-    private String xh;
-    private String kch;
+    private CjbId id;
     private Integer cj;
     private Integer xf;
 
-    @Id
-    @Column(name = "xh")
-    public String getXh() {
-        return xh;
+    /** default constructor */
+    public Cjb() {
     }
 
-    public void setXh(String xh) {
-        this.xh = xh;
+    /** minimal constructor */
+    public Cjb(CjbId id) {
+        this.id = id;
     }
 
-    @Id
-    @Column(name = "kch")
-    public String getKch() {
-        return kch;
-    }
-
-    public void setKch(String kch) {
-        this.kch = kch;
+    /** full constructor */
+    public Cjb(CjbId id, Integer cj, Integer xf) {
+        this.id = id;
+        this.cj = cj;
+        this.xf = xf;
     }
 
     @Basic
@@ -49,6 +46,14 @@ public class Cjb {
 
     public void setXf(Integer xf) {
         this.xf = xf;
+    }
+
+    public CjbId getId() {
+        return id;
+    }
+
+    public void setId(CjbId id) {
+        this.id = id;
     }
 
     @Override

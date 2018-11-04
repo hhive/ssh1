@@ -2,6 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import model.Cjb;
 import model.CjbId;
 import model.Kcb;
 import service.CjService;
