@@ -4,6 +4,7 @@ import dao.BaseDAO;
 import dao.CjDao;
 import model.Cjb;
 import model.CjbId;
+import model.CjbPK;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,12 +14,12 @@ import java.util.List;
 public class CjDaoImp extends BaseDAO implements CjDao {
 	/* ʵ�֣��ɼ���Ϣ¼�� */
 	public Cjb getXsCj(String xh, String kch){
-		CjbId cjbId=new CjbId();
-		cjbId.setXh(xh);
-		cjbId.setKch(kch);
+		CjbPK cjbPk=new CjbPK();
+		cjbPk.setXh(xh);
+		cjbPk.setKch(kch);
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		return (Cjb)session.get(Cjb.class, cjbId);
+		return (Cjb)session.get(Cjb.class, cjbPk);
 	}
 	public void saveorupdateCj(Cjb cj){
 		Session session=getSession();
@@ -32,7 +33,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 	public List findAllCj(int pageNow, int pageSize){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		Query query=session.createQuery("SELECT c.xh,a.xm,b.kcm,c.cj,c.xf,c.kch FROM Xsb a,Kcb b,Cjb c WHERE a.xh=c.xh AND b.kch=c.kch");
+		Query query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf,c.id.kch FROM Xsb a,Kcb b,Cjb c WHERE a.xh=c.id.xh AND b.kch=c.id.kch");
 		query.setFirstResult((pageNow-1)*pageSize);			//��ҳ�Ӽ�¼��ʼ����
 		query.setMaxResults(pageSize);						//���ҵ����������
 		List list=query.list();
@@ -55,7 +56,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 	public List getXsCjList(String xh){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		Query query=session.createQuery("SELECT c.xh,a.xm,b.kcm,c.cj,c.xf FROM Xsb a,Kcb b,Cjb c WHERE c.xh=? AND a.xh=c.xh AND b.kch=c.kch");
+		Query query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf FROM Xsb a,Kcb b,Cjb c WHERE c.id.xh=? AND a.xh=c.id.xh AND b.kch=c.id.kch");
 		query.setParameter(0, xh);
 		List list=query.list();
 		ts.commit();

@@ -40,5 +40,18 @@
         <action name="addorupdateXscj" class="cj" method="addorupdateXscj">
             <result name="success">/success.jsp</result>
         </action>
+        <!-- 显示所有学生成绩 -->
+        <action name="xscjInfo" class="cj" method="xscjInfo">
+            <result name="success">/xscjInfo.jsp</result>
+        </action>
+        <!-- 查看某个学生的成绩表 -->
+        <action name="findXscj" class="cj" method="findXscj">
+            <result name="success">/oneXscj.jsp</result>
+            <result name="error">/noXscj.jsp</result>
+        </action>
+        <!-- 删除学生成绩 -->
+        <action name="deleteOneXscj" class="cj" method="deleteOneXscj">
+            <result name="success">/success.jsp</result>
+        </action>
     </package>
 </struts>

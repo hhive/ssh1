@@ -18,8 +18,8 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <!--<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/webtest?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8</prop>-->
                 <!--<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>-->
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/xscjgl?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8</prop>
-                <prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/xscjgl</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -31,6 +31,11 @@
                 <value>model.Xsb</value>
                 <value>model.Zyb</value>
                 <value>model.XsKcb</value>
+            </list>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:model/Cjb.hbm.xml</value>
             </list>
         </property>
     </bean>

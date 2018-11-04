@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Cjb;
 import model.CjbId;
+import model.CjbPK;
 import model.Kcb;
 import service.CjService;
 import service.KcService;
@@ -31,7 +32,7 @@ public class CjAction extends ActionSupport{
 	}
 	public String addorupdateXscj() throws Exception{
 		Cjb cj1 = null;
-		CjbId cjId1=new CjbId();
+		CjbPK cjId1=new CjbPK();
 		cjId1.setXh(cj.getId().getXh());
 		cjId1.setKch(cj.getId().getKch());
 		if(cjService.getXsCj(cj.getId().getXh(), cj.getId().getKch())==null){
