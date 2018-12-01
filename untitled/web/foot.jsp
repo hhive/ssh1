@@ -4,6 +4,6 @@
 	<title>学生成绩管理系统</title>
 </head>
 <body bgcolor="#D9DFAA">
-	<img src="images/foot.gif"/>
+	<img src=""/>
 </body>
 </html>

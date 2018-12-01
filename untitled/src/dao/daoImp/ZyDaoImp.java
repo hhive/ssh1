@@ -3,7 +3,7 @@ package dao.daoImp;
 import dao.BaseDAO;
 import dao.ZyDao;
 import model.Zyb;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -16,10 +16,11 @@ public class ZyDaoImp extends BaseDAO implements ZyDao {
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			Query query=session.createQuery("from Zyb where id=?");
-			query.setParameter(0, zyId);
+			Query query=session.createQuery("from Zyb where id='" + zyId + "'");
 			query.setMaxResults(1);
-			return (Zyb)query.uniqueResult();	
+			Zyb zyb = (Zyb)query.uniqueResult();
+			session.close();
+			return zyb;
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;

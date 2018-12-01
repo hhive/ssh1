@@ -5,6 +5,7 @@ import dao.BaseDAO;
 import dao.KcDao;
 import model.Kcb;
 import org.hibernate.*;
+import org.hibernate.query.Query;
 
 
 public class KcDaoImp extends BaseDAO implements KcDao {
@@ -25,14 +26,15 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 	public int findKcSize(){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		return session.createQuery("from Kcb").list().size();
+		int i = session.createQuery("from Kcb").list().size();
+		session.close();
+		return i;
 	}
 	public Kcb find(String kch){
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			Query query=session.createQuery("from Kcb where kch=?");
-			query.setParameter(0, kch);
+			Query query=session.createQuery("from Kcb where kch='" + kch + "'");
 			query.setMaxResults(1);
 			Kcb kc=(Kcb)query.uniqueResult();
 			ts.commit();

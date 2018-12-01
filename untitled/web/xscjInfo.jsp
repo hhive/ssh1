@@ -23,15 +23,19 @@
 		</tr>
 		</s:iterator>
 		<tr align="left">
+
 			<s:set name="page" value="#request.page"></s:set>
+			<s:if test="#page.totalPage">
+				总页数：<s:property value="#page.totalPage"/>&nbsp;
+			</s:if>
 			<s:if test="#page.hasFirst">
-				<s:a href="xscjInfo.action?pageNow=1">首页</s:a>
+				<s:a href="xscjInfo.action?pageNow=1">首页</s:a>&nbsp;
 			</s:if>
 			<s:if test="#page.hasPre">
-				<a href="xscjInfo.action?pageNow=<s:property value="#page.pageNow-1"/>">上一页</a>
+				<a href="xscjInfo.action?pageNow=<s:property value="#page.pageNow-1"/>">上一页</a>&nbsp;
 			</s:if>
 			<s:if test="#page.hasNext">
-				<a href="xscjInfo.action?pageNow=<s:property value="#page.pageNow+1"/>">下一页</a>
+				<a href="xscjInfo.action?pageNow=<s:property value="#page.pageNow+1"/>">下一页</a>&nbsp;
 			</s:if>
 			<s:if test="#page.hasLast">
 				<a href="xscjInfo.action?pageNow=<s:property value="#page.totalPage"/>">尾页</a>

@@ -5,7 +5,7 @@ import dao.CjDao;
 import model.Cjb;
 import model.CjbId;
 import model.CjbPK;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -45,7 +45,9 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			return session.createQuery("from Cjb").list().size();			
+			int i = session.createQuery("from Cjb").list().size();
+			session.close();
+			return i;
 		}catch(Exception e){
 			e.printStackTrace();
 			return 0;
@@ -56,8 +58,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 	public List getXsCjList(String xh){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		Query query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf FROM Xsb a,Kcb b,Cjb c WHERE c.id.xh=? AND a.xh=c.id.xh AND b.kch=c.id.kch");
-		query.setParameter(0, xh);
+		Query query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf FROM Xsb a,Kcb b,Cjb c WHERE c.id.xh='" + xh + "' AND a.xh=c.id.xh AND b.kch=c.id.kch");
 		List list=query.list();
 		ts.commit();
 		session.close();

@@ -18,11 +18,10 @@ public class CjAction extends ActionSupport{
 	private XsService xsService;
 	private KcService kcService;
 	private CjService cjService;
-	/* Action ģ�飺ѧ���ɼ���ѯ */
-	private int pageNow = 1;			//Ĭ�ϵ�һҳ
-	private int pageSize = 8;			//ÿҳ��ʾ 8 ����¼
-	/* Action ģ�飺�ɼ���Ϣ¼�� */
+	private int pageNow = 1;
+	private int pageSize = 8;
 	public String execute() throws Exception{
+
 		List list1=xsService.findAll(1, xsService.findXsSize());
 		List list2=kcService.findAll(1, kcService.findKcSize());
 		Map request=(Map)ActionContext.getContext().get("request");
@@ -50,8 +49,7 @@ public class CjAction extends ActionSupport{
 		cjService.saveorupdateCj(cj1);
 		return SUCCESS;
 	}
-	
-	/* Action ģ�飺ѧ���ɼ���ѯ */
+
 	public String xscjInfo() throws Exception{
 		List list=cjService.findAllCj(this.getPageNow(), this.getPageSize());
 		Map request=(Map)ActionContext.getContext().get("request");
@@ -60,8 +58,7 @@ public class CjAction extends ActionSupport{
 		request.put("page", page);
 		return SUCCESS;
 	}
-	
-	/* Action ģ�飺�鿴ĳ��ѧ���ĳɼ��� */
+
 	public String findXscj() throws Exception{
 		List list=cjService.getXsCjList(cj.getId().getXh());
 		if(list.size()>0){
@@ -71,8 +68,7 @@ public class CjAction extends ActionSupport{
 		}else
 			return ERROR;
 	}
-	
-	/* Action ģ�飺ɾ��ѧ���ɼ� */
+
 	public String deleteOneXscj() throws Exception{
 		String xh=cj.getId().getXh();
 		String kch=cj.getId().getKch();

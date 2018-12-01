@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
 
-public class XsAction extends ActionSupport{
+public class 	XsAction extends ActionSupport{
 	private int pageNow = 1;
 	private int pageSize = 8;
 	private Xsb xs;
@@ -30,6 +30,8 @@ public class XsAction extends ActionSupport{
 		List list=xsService.findAll(pageNow,pageSize);
 		Map request=(Map)ActionContext.getContext().get("request");
 		Pager page=new Pager(getPageNow(),xsService.findXsSize());
+		System.out.println(page.getTotalPage());
+		ActionContext.getContext().put("page", page);
 		request.put("list", list);
 		request.put("page", page);
 		return SUCCESS;

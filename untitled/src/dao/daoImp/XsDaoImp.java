@@ -4,6 +4,7 @@ import dao.BaseDAO;
 import dao.XsDao;
 import model.Xsb;
 import org.hibernate.*;
+import org.hibernate.query.Query;
 
 public class XsDaoImp extends BaseDAO implements XsDao {
 	/* ʵ�֣�ѧ����Ϣ��ѯ */
@@ -18,7 +19,6 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 			List list=query.list();
 			ts.commit();
 			session.close();
-			session=null;
 			return list;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -29,7 +29,9 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			return session.createQuery("from Xsb").list().size();			
+			int i = session.createQuery("from Xsb").list().size();
+			session.close();
+			return i;
 		}catch(Exception e){
 			e.printStackTrace();
 			return 0;
@@ -41,9 +43,7 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			Query query=session.createQuery("from Xsb where xh=?");
-			query.setParameter(0, xh);
-			query.setMaxResults(1);
+			Query query=session.createQuery("from Xsb where xh= '" + xh + "'");
 			Xsb xs=(Xsb)query.uniqueResult();
 			ts.commit();
 			session.clear();
