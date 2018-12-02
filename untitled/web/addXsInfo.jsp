@@ -9,12 +9,12 @@
 		<table border="0" cellspacing="0" cellpadding="1">
 			<tr>
 				<td>
-					<s:textfield name="xs.xh" label="学号" value=""></s:textfield>
+					<s:textfield name="xs.xh" label="学号" value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<s:textfield name="xs.xm" label="姓名" value=""></s:textfield>
+					<s:textfield name="xs.xm" label="姓名" value=""/>
 				</td>
 			</tr>
 			<tr>
@@ -23,24 +23,24 @@
 				</td>
 			</tr>
 			<tr>
-				<s:select name="xs.zyb.id" list="list" listKey="id" listValue="zym" headerKey="0" headerValue="--请选择专业--" label="专业"></s:select>
+				<s:select name="xs.zyb.id"  list="list" listKey="id" listValue="zym" headerKey="0" headerValue="--请选择专业--" label="专业"/>
 			</tr>
 			<tr>
-				<s:textfield name="xs.cssj" label="出生时间" value=""></s:textfield>
+				<s:textfield name="xs.cssj" label="出生时间" value=""/>
 			</tr>
 			<tr>
 				<td>
-					<s:textfield name="xs.zxf" label="总学分" value=""></s:textfield>
+					<s:textfield name="xs.zxf" label="总学分" value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<s:textfield name="xs.bz" label="备注" value=""></s:textfield>
+					<s:textfield name="xs.bz" label="备注" value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<s:file name="zpFile" label="照片" value=""></s:file>
+					<s:file name="zpFile" label="照片" value=""/>
 				</td>
 			</tr>
 		</table>

@@ -2,7 +2,7 @@
 -- # alter table xsb modify column xb enum('1','2');
 -- # alter table cjb drop primary key ;
 -- # alter table cjb add primary key (xh,kch);
--- # 开始周数 结束周数 周几 节数（1,2,3,4,5）开课专业
+-- # 开始周数 结束周数 周几 节数（1,2,3,4,5）开课专业 任课老师
 -- we don't know how to generate schema xscjgl (class Schema) :(
 create table cjb
 (

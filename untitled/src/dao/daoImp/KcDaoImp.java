@@ -45,4 +45,34 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 			return null;
 		}
 	}
+
+	//添加课程
+	public boolean saveOrUpdate(Kcb kc){
+		try{
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			session.saveOrUpdate(kc);
+			ts.commit();
+			session.close();
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean delete(String kxh){
+		try{
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			Kcb kcb=find(kxh);
+			session.delete(kxh);
+			ts.commit();
+			session.close();
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

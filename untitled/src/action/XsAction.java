@@ -27,6 +27,7 @@ public class 	XsAction extends ActionSupport{
 	private List list;						//���רҵ����	
 	/* Action ģ�飺ѧ����Ϣ��ѯ */
 	public String execute() throws Exception{
+        System.out.println("XsAction.execute()");
 		List list=xsService.findAll(pageNow,pageSize);
 		Map request=(Map)ActionContext.getContext().get("request");
 		Pager page=new Pager(getPageNow(),xsService.findXsSize());
@@ -99,9 +100,11 @@ public class 	XsAction extends ActionSupport{
 	
 	/* Action ģ�飺ѧ����Ϣ¼�� */
 	public String addXsView() throws Exception{						//��ʾ¼��ҳ��
+        System.out.println("addXsView()");
 		return SUCCESS;
 	}
-	public String addXs() throws Exception{							//ִ��¼�����
+	public String addXs() throws Exception{
+        System.out.println("addXs()");
 		Xsb stu=new Xsb();
 		String xh1=xs.getXh();
 		//ѧ���Ѵ��ڣ������ظ�¼��
@@ -156,9 +159,11 @@ public class 	XsAction extends ActionSupport{
 	//
 	/* Action ģ�飺ѧ����Ϣ¼�� */
 	public List getList(){
-		return zyService.getAll();			//����רҵ�ļ���
+        System.out.println("getList()");
+		return zyService.getAll();
 	}
 	public void setList(List list){
+        System.out.println("setList(List list)");
 		this.list = list;
 	}
 	

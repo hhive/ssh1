@@ -67,18 +67,27 @@
     <bean id="zyService" class="service.serviceImp.ZyServiceManage">
         <property name="zyDao" ref="zyDao"/>
     </bean>
+
     <bean id="xs" class="action.XsAction">
         <property name="xsService" ref="xsService"/>
         <property name="zyService" ref="zyService"/>
     </bean>
+
     <bean id="kcDao" class="dao.daoImp.KcDaoImp" parent="baseDAO"/>
     <bean id="cjDao" class="dao.daoImp.CjDaoImp" parent="baseDAO"/>
     <bean id="kcService" class="service.serviceImp.KcServiceManage">
         <property name="kcDao" ref="kcDao"/>
     </bean>
+
+    <bean id="kc" class="action.KcAction">
+        <property name="kcService" ref="kcService"/>
+        <property name="zyService" ref="zyService"/>
+    </bean>
+
     <bean id="cjService" class="service.serviceImp.CjServiceManage">
         <property name="cjDao" ref="cjDao"/>
     </bean>
+
     <bean id="cj" class="action.CjAction">
         <property name="xsService" ref="xsService"/>
         <property name="kcService" ref="kcService"/>

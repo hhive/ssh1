@@ -20,11 +20,23 @@ public class KcServiceManage implements KcService {
 	public Kcb find(String kch){
 		return kcDao.find(kch);
 	}
-	
+	public boolean saveOrUpdate(Kcb kc) {
+		if(kcDao.saveOrUpdate(kc)) {
+			return true;
+		}
+		return false;
+	}
 	public KcDao getKcDao(){
 		return kcDao;
 	}
 	public void setKcDao(KcDao kcDao){
 		this.kcDao = kcDao;
 	}
+	public boolean delete(String kch) {
+		if (kcDao.delete(kch)) {
+			return true;
+		}
+		return false;
+	}
+
 }

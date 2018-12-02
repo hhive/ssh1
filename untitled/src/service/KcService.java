@@ -10,4 +10,6 @@ public interface KcService {
 	public List findAll(int pageNow, int pageSize);			//��ѯ���пγ���Ϣ
 	public int findKcSize();								//��ѯһ���������γ̼�¼
 	public Kcb find(String kch);							//���ݿγ̺Ų��ҿγ���Ϣ
+	public boolean saveOrUpdate(Kcb cb);
+	public boolean delete(String kch);
 }

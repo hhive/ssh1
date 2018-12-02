@@ -12,8 +12,8 @@
 	</ol>
 	课程信息管理<br>
 	<ol type="1" start="1">
-		<li><a href="addXscjView.action">学生信息录入</a> </li>
-		<li><a href="xsInfo.action">学生信息查询</a> </li>
+		<li><a href="addKcView.action?message=<s:property value=""/>">课程信息录入</a> </li>
+		<li><a href="kcInfo.action">课程信息查询</a> </li>
 	</ol>
 	成绩信息管理<br>
 	<ol type="1" start="1">
