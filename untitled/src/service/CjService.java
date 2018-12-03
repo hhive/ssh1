@@ -2,6 +2,7 @@ package service;
 
 
 import model.Cjb;
+import model.Dlb;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface CjService {
 	public void saveorupdateCj(Cjb cj);					//¼��ѧ���ɼ�
 	
 	/* ����ѧ���ɼ���ѯ */
-	public List findAllCj(int pageNow, int pageSize);	//��ҳ��ʾ����ѧ���ɼ�
+	public List findAllCj(int pageNow, int pageSize, Dlb dlb);	//��ҳ��ʾ����ѧ���ɼ�
 	public int findCjSize();							//��ѯһ���������ɼ���¼
 	
 	/* ���񣺲鿴ĳ��ѧ���ĳɼ��� */

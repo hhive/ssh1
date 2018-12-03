@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td width="80">
-					<s:radio list="#{1:'男',0:'女'}" value="#xs.xb"	label="性别" name="xs.xb"></s:radio>
+					<s:radio list="#{1:'男',0:'女'}" value="#xs.xb"	label="性别" name="xs.xb"/>
 				</td>
 			</tr>
 			<tr>

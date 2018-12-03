@@ -2,17 +2,14 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import model.Cjb;
-import model.CjbId;
-import model.CjbPK;
-import model.Kcb;
+import model.*;
 import service.CjService;
 import service.KcService;
 import service.XsService;
 import tool.Pager;
 import java.util.List;
 import java.util.Map;
-
+//老师只能管理自己课程的成绩
 public class CjAction extends ActionSupport{
 	private Cjb cj;
 	private XsService xsService;
@@ -20,15 +17,19 @@ public class CjAction extends ActionSupport{
 	private CjService cjService;
 	private int pageNow = 1;
 	private int pageSize = 8;
-	public String execute() throws Exception{
 
+	//addCj.jsp
+	public String execute() throws Exception{
+		Map session=ActionContext.getContext().getSession();
+		Dlb dlb = (Dlb)session.get("dl");
 		List list1=xsService.findAll(1, xsService.findXsSize());
-		List list2=kcService.findAll(1, kcService.findKcSize());
+		List list2=kcService.findAll(1, kcService.findKcSize(dlb),dlb);
 		Map request=(Map)ActionContext.getContext().get("request");
 		request.put("list1", list1);
 		request.put("list2", list2);
 		return SUCCESS;
 	}
+
 	public String addorupdateXscj() throws Exception{
 		Cjb cj1 = null;
 		CjbPK cjId1=new CjbPK();
@@ -51,7 +52,10 @@ public class CjAction extends ActionSupport{
 	}
 
 	public String xscjInfo() throws Exception{
-		List list=cjService.findAllCj(this.getPageNow(), this.getPageSize());
+		Map session=ActionContext.getContext().getSession();
+		Dlb dlb = (Dlb)session.get("dl");
+		System.out.println("xscjInfo:" + dlb.getId());
+		List list=cjService.findAllCj(this.getPageNow(), this.getPageSize(), dlb);
 		Map request=(Map)ActionContext.getContext().get("request");
 		request.put("list",list);
 		Pager page=new Pager(this.getPageNow(), cjService.findCjSize());

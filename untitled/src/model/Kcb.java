@@ -16,11 +16,12 @@ public class Kcb {
     private int lesson;
     private String destination;
     private Zyb zyb;
+    private Dlb dlb;
 
     public Kcb() {
     }
 
-    public Kcb(String kch, String kcm, int kxxq, Integer xs, Integer xf, int weekBegin, int weekEnd, int weekDay, int lesson, String destination, Zyb zyb) {
+    public Kcb(String kch, String kcm, int kxxq, Integer xs, Integer xf, int weekBegin, int weekEnd, int weekDay, int lesson, String destination, Zyb zyb, Dlb dlb) {
         this.kch = kch;
         this.kcm = kcm;
         this.kxxq = kxxq;
@@ -32,6 +33,7 @@ public class Kcb {
         this.lesson = lesson;
         this.destination = destination;
         this.zyb = zyb;
+        this.dlb = dlb;
     }
 
     @Id
@@ -45,7 +47,7 @@ public class Kcb {
     }
 
     @Basic
-    @Column(name = "kcm", nullable = true, length = 12)
+    @Column(name = "kcm", nullable = false, length = 12)
     public String getKcm() {
         return kcm;
     }
@@ -55,11 +57,10 @@ public class Kcb {
     }
 
     @Basic
-    @Column(name = "kxxq", nullable = true)
+    @Column(name = "kxxq", nullable = false)
     public int getKxxq() {
         return kxxq;
     }
-
 
 
     public void setKxxq(int kxxq) {
@@ -67,24 +68,25 @@ public class Kcb {
     }
 
     @Basic
-    @Column(name = "xs", nullable = true)
-    public Integer getXs() {
+    @Column(name = "xs", nullable = false)
+    public int getXs() {
         return xs;
     }
 
-    public void setXs(Integer xs) {
+    public void setXs(int xs) {
         this.xs = xs;
     }
 
     @Basic
-    @Column(name = "xf", nullable = true)
-    public Integer getXf() {
+    @Column(name = "xf", nullable = false)
+    public int getXf() {
         return xf;
     }
 
-    public void setXf(Integer xf) {
+    public void setXf(int xf) {
         this.xf = xf;
     }
+
 
     @Basic
     @Column(name = "weekBegin", nullable = false)
@@ -112,8 +114,6 @@ public class Kcb {
         return weekDay;
     }
 
-
-
     public void setWeekDay(int weekDay) {
         this.weekDay = weekDay;
     }
@@ -123,7 +123,6 @@ public class Kcb {
     public int getLesson() {
         return lesson;
     }
-
 
     public void setLesson(int lesson) {
         this.lesson = lesson;
@@ -169,5 +168,15 @@ public class Kcb {
 
     public void setZyb(Zyb zyb){
         this.zyb = zyb;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "tno")//外键
+    public Dlb getDlb() {
+        return dlb;
+    }
+
+    public void setDlb(Dlb dlb) {
+        this.dlb = dlb;
     }
 }

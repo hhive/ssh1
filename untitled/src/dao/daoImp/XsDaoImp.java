@@ -53,8 +53,7 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 			return null;
 		}		
 	}
-	
-	/* ʵ�֣�ɾ��ĳѧ����Ϣ */
+
 	public void delete(String xh){
 		try{
 			Session session=getSession();

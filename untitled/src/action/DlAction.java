@@ -19,7 +19,7 @@ public class DlAction extends ActionSupport{
 		dl1=(Dlb)session.get("dl");
 		//����û��ǵ�һ�ν��룬�Ự����δ�洢 dl1 �־û����󣬹�Ϊ null
 		if(dl1==null){
-			dl1=dlService.find(dl.getXh(), dl.getKl());
+			dl1=dlService.find(dl.getId(), dl.getPassword());
 			if(dl1!=null){
 				session.put("dl", dl1);			//�� dl1 ����洢�ڻỰ��
 				validated=true;					//��ʶΪ true ��ʾ��֤�ɹ�ͨ��

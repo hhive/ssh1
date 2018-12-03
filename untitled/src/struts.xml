@@ -54,15 +54,25 @@
             <result name="success">/success.jsp</result>
         </action>
         <!--显示所有课程 -->
-        <action name="addKcView" class="kc" method="addKcView">
-            <result name="success">/addKC.jsp</result>
-        </action>
         <action name="kcInfo" class="kc">
             <result name="success">/kcInfo.jsp</result>
         </action>
-        <action name="addKc" class="kc" method="addXs">
+        <action name="addKcView" class="kc" method="addKcView">
+            <result name="success">/addKc.jsp</result>
+        </action>
+        <action name="addKc" class="kc" method="addKc">
             <result name="success">kcInfo.action</result>
             <result name="error" type="redirectAction">addKcView</result>
+        </action>
+        <action name="updateKc" class="kc" method="updateKc">
+            <result name="success">updateKc.jsp</result>
+            <result name="error">updateKc.jsp</result>
+        </action>
+        <action name="deleteKc" class="kc" method="deleteKc">
+            <result name="success" type="redirectAction">kcInfo</result>
+        </action>
+        <action name="findOneKc" class="kc" method="findOneKc">
+            <result name="success">updateKc.jsp</result>
         </action>
     </package>
 </struts>

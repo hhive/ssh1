@@ -10,12 +10,12 @@
 	<caption>用户登录</caption>
 	<tr>
 		<td>
-			学号：<s:textfield name="dl.xh" size="20"/>
+			学号：<s:textfield name="dl.id" size="20"/>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			口令：<s:password name="dl.kl" size="21"/>
+			口令：<s:password name="dl.password" size="21"/>
 		</td>
 	</tr>
 	<tr>

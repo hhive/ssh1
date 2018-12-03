@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td>
-            <s:textfield name="kc.kxxq" label="开课学期" value=""/>
+            <s:select name="kc.kxxq" value="1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8}" label="开课周次"/>
         </td>
     </tr>
     <tr>

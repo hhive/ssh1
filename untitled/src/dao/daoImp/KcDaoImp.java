@@ -3,6 +3,7 @@ import java.util.List;
 
 import dao.BaseDAO;
 import dao.KcDao;
+import model.Dlb;
 import model.Kcb;
 import org.hibernate.*;
 import org.hibernate.query.Query;
@@ -10,23 +11,25 @@ import org.hibernate.query.Query;
 
 public class KcDaoImp extends BaseDAO implements KcDao {
 	/* ʵ�֣��ɼ���Ϣ¼�� */
-	public List findAll(int pageNow, int pageSize){
+	public List findAll(int pageNow, int pageSize, Dlb dlb){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		Query query=session.createQuery("from Kcb");
+		//外键查询通过外连接实现,需要在配置文件中配置
+		Query query=session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'"	);
 		int firstResult=(pageNow-1)*pageSize;
 		query.setFirstResult(firstResult);
 		query.setMaxResults(pageSize);
 		List list=query.list();
+
 		ts.commit();
 		session.close();
 		session=null;
 		return list;
 	}
-	public int findKcSize(){
+	public int findKcSize(Dlb dlb){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		int i = session.createQuery("from Kcb").list().size();
+		int i = session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'").list().size();
 		session.close();
 		return i;
 	}
@@ -60,12 +63,12 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 			return false;
 		}
 	}
-	public boolean delete(String kxh){
+	public boolean delete(String kch){
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			Kcb kcb=find(kxh);
-			session.delete(kxh);
+			Kcb kcb=find(kch);
+			session.delete(kcb);
 			ts.commit();
 			session.close();
 			return true;

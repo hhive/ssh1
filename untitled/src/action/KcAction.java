@@ -1,7 +1,9 @@
 package action;
 
 import com.opensymphony.xwork2.ActionContext;
+import model.Dlb;
 import model.Kcb;
+import service.DlService;
 import service.KcService;
 import service.ZyService;
 import tool.Pager;
@@ -13,7 +15,7 @@ import java.util.Map;
 
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
-
+//老师只能管理自己的课程
 public class KcAction {
 
     private int pageNow = 1;
@@ -21,13 +23,19 @@ public class KcAction {
     private Kcb kc;
     private KcService kcService;
     private ZyService zyService;
+    private DlService dlService;
+
     private List list;
     private String message;
 
     public String execute() throws Exception{
-        List list=kcService.findAll(pageNow,pageSize);
+        Map session=ActionContext.getContext().getSession();
+        Dlb dlb = (Dlb)session.get("dl");
+        List list=kcService.findAll(pageNow,pageSize,dlb);
+        Kcb temp = (Kcb)list.get(0);
+        System.out.println("list" + temp.getZyb().getZym());
         Map request=(Map) ActionContext.getContext().get("request");
-        Pager page=new Pager(getPageNow(),kcService.findKcSize());
+        Pager page=new Pager(getPageNow(),kcService.findKcSize(dlb));
         System.out.println(page.getTotalPage());
         ActionContext.getContext().put("page", page);
         request.put("list", list);
@@ -36,7 +44,9 @@ public class KcAction {
     }
 
     private boolean isLesson(Kcb kc) {
-        List list = kcService.findAll(1,100);
+        Map session=ActionContext.getContext().getSession();
+        Dlb dlb = (Dlb)session.get("dl");
+        List list = kcService.findAll(1,100, dlb);
         Iterator it = list.iterator();
         while (it.hasNext()) {
             Kcb k = (Kcb) it.next();
@@ -53,20 +63,24 @@ public class KcAction {
             }
             if (kc.getWeekBegin() <= kc.getWeekEnd()) {
                 message = "结束周次不能大于或等于开始周次";
+                return false;
             }
         }
         return true;
     }
 
-    public String addKcView() throws Exception{						//��ʾ¼��ҳ��
+    public String addKcView() throws Exception{
         Map request=(Map) ActionContext.getContext().get("request");
         List list = zyService.getAll();
         request.put("list", list);
         return SUCCESS;
     }
 
-    public String addXs() throws Exception{							//ִ��¼�����
+    public String addKc() throws Exception{
         kc.setZyb(zyService.getOneZy(kc.getZyb().getId()));
+        Map session = ActionContext.getContext().getSession();
+        Dlb dlb = (Dlb)session.get("dl");
+        kc.setDlb(dlb);
         if (isLesson(kc)) {
             if (kcService.saveOrUpdate(kc)) {
                 return SUCCESS;
@@ -77,17 +91,25 @@ public class KcAction {
         }
     }
 
-    public String findKc() throws Exception{
+    public String findOneKc() throws Exception{
         String kch=kc.getKch();
         kc = kcService.find(kch);
+        List zys=zyService.getAll();
+        Map request=(Map)ActionContext.getContext().get("request");
+        request.put("zys", zys);
         return SUCCESS;
     }
 
-    /* Action ģ�飺ɾ��ĳѧ����Ϣ */
-    public String deleteXs() throws Exception{
+    public String deleteKc() throws Exception{
         String kch=kc.getKch();
-        kcService.delete(kch);
-        return SUCCESS;
+        if(kcService.delete(kch)) {
+            message = "删除成功！";
+            return SUCCESS;
+        } else {
+            message = "删除失败！";
+            return ERROR;
+        }
+
     }
 
     /* Action ģ�飺�޸�ĳѧ����Ϣ */
@@ -100,9 +122,16 @@ public class KcAction {
 //        request.put("zys", zys);
 //        return SUCCESS;
 //    }
-    public String updateXs() throws Exception{						//ִ���޸Ĳ���
-        kcService.saveOrUpdate(kc);
-        return SUCCESS;
+    public String updateKc() throws Exception{
+        Map session = ActionContext.getContext().getSession();
+        Dlb dlb = (Dlb)session.get("dl");
+        kc.setDlb(dlb);
+        if (isLesson(kc)) {
+            kcService.saveOrUpdate(kc);
+            message = "修改成功！";
+            return SUCCESS;
+        }
+        return ERROR;
     }
 
     public Kcb getKc() {
@@ -137,7 +166,6 @@ public class KcAction {
         this.list = list;
     }
 
-
     public int getPageNow() {
         return pageNow;
     }
@@ -152,5 +180,13 @@ public class KcAction {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public DlService getDlService() {
+        return dlService;
+    }
+
+    public void setDlService(DlService dlService) {
+        this.dlService = dlService;
     }
 }

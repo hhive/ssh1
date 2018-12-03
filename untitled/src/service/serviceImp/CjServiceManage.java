@@ -2,6 +2,7 @@ package service.serviceImp;
 
 import dao.CjDao;
 import model.Cjb;
+import model.Dlb;
 import service.CjService;
 
 import java.util.List;
@@ -17,8 +18,8 @@ public class CjServiceManage implements CjService {
 	}
 	
 	/* ҵ��ʵ�֣�ѧ���ɼ���ѯ */
-	public List findAllCj(int pageNow, int pageSize){
-		return cjDao.findAllCj(pageNow, pageSize);
+	public List findAllCj(int pageNow, int pageSize, Dlb dlb){
+		return cjDao.findAllCj(pageNow, pageSize, dlb);
 	}
 	public int findCjSize(){
 		return cjDao.findCjSize();
