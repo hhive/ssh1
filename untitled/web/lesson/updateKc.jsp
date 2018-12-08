@@ -76,5 +76,7 @@
     </s:form>
     <br>
     <s:property value="message"/>
+<br>
+    <input type="button" value="返回" onClick="javaScript:history.back()"/>
 </body>
 </html>

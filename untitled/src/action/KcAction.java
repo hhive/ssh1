@@ -61,8 +61,8 @@ public class KcAction {
                     }
                 }
             }
-            if (kc.getWeekBegin() <= kc.getWeekEnd()) {
-                message = "结束周次不能大于或等于开始周次";
+            if (kc.getWeekBegin() >= kc.getWeekEnd()) {
+                message = "结束周次不能小于或等于开始周次";
                 return false;
             }
         }
@@ -112,8 +112,8 @@ public class KcAction {
 
     }
 
-    /* Action ģ�飺�޸�ĳѧ����Ϣ */
-//    public String updateXsView() throws Exception{					//��ʾ�޸�ҳ��
+
+//    public String updateXsView() throws Exception{
 //        String xh=kc.getXh();
 //        Xsb xsInfo=xsService.find(xh);
 //        List zys=zyService.getAll();

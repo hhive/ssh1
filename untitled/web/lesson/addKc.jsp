@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td>
-            <s:select name="kc.kxxq" value="1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8}" label="开课周次"/>
+            <s:select name="kc.kxxq" value="1" list="#{1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8}" label="开课学期"/>
         </td>
     </tr>
     <tr>
@@ -67,5 +67,6 @@
     </s:form>
 <br>
 <s:property value="message"/>
+    <input type="button" value="返回" onClick="javaScript:history.back()"/>
 </body>
 </html>

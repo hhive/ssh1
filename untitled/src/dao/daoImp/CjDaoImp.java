@@ -13,7 +13,6 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class CjDaoImp extends BaseDAO implements CjDao {
-	/* ʵ�֣��ɼ���Ϣ¼�� */
 	public Cjb getXsCj(String xh, String kch){
 		CjbPK cjbPk=new CjbPK();
 		cjbPk.setXh(xh);
@@ -29,12 +28,16 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 		ts.commit();
 		session.close();
 	}
-	
-	/* ʵ�֣�ѧ���ɼ���ѯ */
+
 	public List findAllCj(int pageNow, int pageSize, Dlb dlb){
+		Query query;
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		Query query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf,c.id.kch FROM Xsb a,Kcb b,Cjb c WHERE a.xh=c.id.xh AND b.kch=c.id.kch AND b.dlb.id='" + dlb.getId() + "'");
+		if (dlb.getRole().equals("sa")) {
+			query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf,c.id.kch FROM Xsb a,Kcb b,Cjb c WHERE a.xh=c.id.xh AND b.kch=c.id.kch");
+		} else {
+			query=session.createQuery("SELECT c.id.xh,a.xm,b.kcm,c.cj,c.xf,c.id.kch FROM Xsb a,Kcb b,Cjb c WHERE a.xh=c.id.xh AND b.kch=c.id.kch AND b.dlb.id='" + dlb.getId() + "'");
+		}
 		query.setFirstResult((pageNow-1)*pageSize);			//��ҳ�Ӽ�¼��ʼ����
 		query.setMaxResults(pageSize);						//���ҵ����������
 		List list=query.list();
@@ -54,8 +57,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 			return 0;
 		}
 	}
-	
-	/* ʵ�֣��鿴ĳ��ѧ���ĳɼ��� */
+
 	public List getXsCjList(String xh){
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
@@ -65,8 +67,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 		session.close();
 		return list;
 	}
-	
-	/* ʵ�֣�ɾ��ѧ���ɼ� */
+
 	public void deleteCj(String xh, String kch){
 		try{
 			Session session=getSession();

@@ -12,10 +12,15 @@ import org.hibernate.query.Query;
 public class KcDaoImp extends BaseDAO implements KcDao {
 	/* ʵ�֣��ɼ���Ϣ¼�� */
 	public List findAll(int pageNow, int pageSize, Dlb dlb){
+		Query query;
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		//外键查询通过外连接实现,需要在配置文件中配置
-		Query query=session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'"	);
+		if (dlb.getRole().equals("sa")) {
+			query = session.createQuery("from Kcb");
+		} else {
+			//外键查询通过外连接实现,需要在配置文件中配置
+			query=session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'"	);
+		}
 		int firstResult=(pageNow-1)*pageSize;
 		query.setFirstResult(firstResult);
 		query.setMaxResults(pageSize);
@@ -27,9 +32,14 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 		return list;
 	}
 	public int findKcSize(Dlb dlb){
+		int i;
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
-		int i = session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'").list().size();
+		if (dlb.getRole().equals("sa")) {
+			i = session.createQuery("from Kcb").list().size();
+		} else {
+			i = session.createQuery("from Kcb where dlb.id like '%" + dlb.getId() + "%'").list().size();
+		}
 		session.close();
 		return i;
 	}

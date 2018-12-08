@@ -20,12 +20,12 @@ public class 	XsAction extends ActionSupport{
 	private int pageSize = 8;
 	private Xsb xs;
 	private XsService xsService;
-	/* Action ģ�飺�޸�ĳѧ����Ϣ */
-	private ZyService zyService;			//���ڲ�������רҵ��Ϣ�Լ���רҵ�����б�
-	private File zpFile;					//���ڻ�ȡ��Ƭ�ļ�
-	/* Action ģ�飺ѧ����Ϣ¼�� */
-	private List list;						//���רҵ����	
-	/* Action ģ�飺ѧ����Ϣ��ѯ */
+
+	private ZyService zyService;
+	private File zpFile;
+
+	private List list;
+
 	public String execute() throws Exception{
         System.out.println("XsAction.execute()");
 		List list=xsService.findAll(pageNow,pageSize);
@@ -38,7 +38,7 @@ public class 	XsAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	/* Action ģ�飺�鿴ĳ��ѧ������ϸ��Ϣ */
+
 	public String findXs() throws Exception{
 		String xh=xs.getXh();
 		Xsb stu=xsService.find(xh);
@@ -62,14 +62,14 @@ public class 	XsAction extends ActionSupport{
 		return NONE;
 	}
 	
-	/* Action ģ�飺ɾ��ĳѧ����Ϣ */
+
 	public String deleteXs() throws Exception{
 		String xh=xs.getXh();
 		xsService.delete(xh);
 		return SUCCESS;
 	}
 	
-	/* Action ģ�飺�޸�ĳѧ����Ϣ */
+
 	public String updateXsView() throws Exception{					//��ʾ�޸�ҳ��
 		String xh=xs.getXh();
 		Xsb xsInfo=xsService.find(xh);
@@ -98,8 +98,8 @@ public class 	XsAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	/* Action ģ�飺ѧ����Ϣ¼�� */
-	public String addXsView() throws Exception{						//��ʾ¼��ҳ��
+
+	public String addXsView() throws Exception{
         System.out.println("addXsView()");
 		return SUCCESS;
 	}
@@ -107,7 +107,7 @@ public class 	XsAction extends ActionSupport{
         System.out.println("addXs()");
 		Xsb stu=new Xsb();
 		String xh1=xs.getXh();
-		//ѧ���Ѵ��ڣ������ظ�¼��
+
 		if(xsService.find(xh1)!=null){
 			return ERROR;
 		}

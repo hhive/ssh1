@@ -1,5 +1,6 @@
 package action;
 
+import com.mysql.cj.Session;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import model.User;
@@ -21,25 +22,23 @@ public class LoginAction extends ActionSupport {
 
     protected UserService userService;
 	public String execute() throws Exception{
-		String usr=user.getUsername();			//获取提交的用户名
-		String pwd=user.getPassword();			//获取提交的密码
-		boolean validated=false;				//验证成功标识
+		String usr=user.getUsername();
+		String pwd=user.getPassword();
+		boolean validated=false;
 		//ApplicationContext sp_context=new FileSystemXmlApplicationContext("file:E:/study/Java EE/webtrst/ssh1/untitled/src/applicationContext.xml");//改
 		context=ActionContext.getContext();
-		Map session=context.getSession();		//获得会话对象，用来保存当前登录用户的信息
+		Map session=context.getSession();
 		User user1=null;
-		//先获得 UserTable 对象，如果是第一次访问该页，用户对象肯定为空，但如果是第二次甚至是第三次，就直接登录主页而无须再次重复验证该用户的信息
 		user1=(User)session.get("user");
-		//如果用户是第一次进入，会话中尚未存储 user1 持久化对象，故为 null
 		if(user1==null){
 			user1 = userService.validateUser(usr,pwd);
 			if(user1!=null){
-				session.put("user", user1);		//把 user1 对象存储在会话中
-				validated=true;					//标识为 true 表示验证成功通过
+				session.put("user", user1);
+				validated=true;
 			}
 		}
 		else{
-			validated=true;									//该用户在之前已登录过并成功验证，故标识为 true 表示无须再验了
+			validated=true;
 		}
 		if(validated)
 		{
@@ -65,6 +64,8 @@ public class LoginAction extends ActionSupport {
         }
         return ERROR;
     }
+
+
 	public User getUser(){
 		return user;
 	}

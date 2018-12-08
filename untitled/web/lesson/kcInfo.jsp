@@ -15,7 +15,7 @@
             <td><s:property value="#kc.xs"/></td>
             <td><s:property value="#kc.xf"/></td>
             <td><s:property value="#kc.zyb.zym"/></td>
-            <td><s:property value="#session.dl.name"/></td>
+            <td><s:property value="#kc.dlb.name"/></td>
             <td><s:property value="#kc.weekBegin"/>~<s:property value="#kc.weekEnd"/>周</td>
             <td>星期<s:property value="#kc.weekDay"/>&nbsp;第<s:property value="#kc.lesson"/>节</td>
             <td><s:property value="#kc.destination"/></td>
@@ -46,5 +46,6 @@
         </s:if>
     </tr>
 </table>
+<input type="button" value="返回" onClick="javaScript:history.back()"/>
 </body>
 </html>

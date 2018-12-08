@@ -41,5 +41,6 @@
 		<input type="submit" value="确定"/>
 		<input type="reset" value="重置"/>
 	</s:form>
+    <input type="button" value="返回" onClick="javaScript:history.back()"/>
 </body>
 </html>
