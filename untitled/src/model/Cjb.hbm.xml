@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.Cjb" table="cjb" schema="xscjgl">
+    <class name="model.Cjb" table="cjb" schema="teachermanager">
         <composite-id name="id" class="model.CjbPK">
             <key-property name="xh" type="java.lang.String">
                 <column name="XH" length="6" />

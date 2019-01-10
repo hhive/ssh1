@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Xsb;
 import org.apache.struts2.ServletActionContext;
+import service.CjService;
 import service.XsService;
 import service.ZyService;
 import tool.Pager;
@@ -20,11 +21,15 @@ public class 	XsAction extends ActionSupport{
 	private int pageSize = 8;
 	private Xsb xs;
 	private XsService xsService;
-
+    private CjService cjService;
 	private ZyService zyService;
 	private File zpFile;
 
-	private List list;
+    public void setCjService(CjService cjService) {
+        this.cjService = cjService;
+    }
+
+    private List list;
 
 	public String execute() throws Exception{
         System.out.println("XsAction.execute()");
@@ -65,12 +70,14 @@ public class 	XsAction extends ActionSupport{
 
 	public String deleteXs() throws Exception{
 		String xh=xs.getXh();
+        System.out.println("xh:" + xh);
+        cjService.deleteOneXsCj(xh);
 		xsService.delete(xh);
 		return SUCCESS;
 	}
 	
 
-	public String updateXsView() throws Exception{					//��ʾ�޸�ҳ��
+	public String updateXsView() throws Exception{
 		String xh=xs.getXh();
 		Xsb xsInfo=xsService.find(xh);
 		List zys=zyService.getAll();
@@ -79,7 +86,7 @@ public class 	XsAction extends ActionSupport{
 		request.put("zys", zys);
 		return SUCCESS;
 	}
-	public String updateXs() throws Exception{						//ִ���޸Ĳ���
+	public String updateXs() throws Exception{
 		Xsb xs1=xsService.find(xs.getXh());
 		xs1.setXm(xs.getXm());
 		xs1.setXb(xs.getXb());

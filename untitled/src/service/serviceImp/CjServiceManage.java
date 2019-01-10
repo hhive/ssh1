@@ -37,11 +37,17 @@ public class CjServiceManage implements CjService {
 	public void deleteOneXsCj(String xh){
 		cjDao.deleteOneXsCj(xh);
 	}
-	
+	public boolean deleteCjByKch(String kch) {
+		if(cjDao.deleteCjByKch(kch)) {
+			return true;
+		}
+		return false;
+	}
 	public CjDao getCjDao(){
 		return cjDao;
 	}
 	public void setCjDao(CjDao cjDao){
 		this.cjDao = cjDao;
 	}
+
 }

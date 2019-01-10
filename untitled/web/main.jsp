@@ -2,10 +2,10 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>学生成绩管理系统</title>
+	<title>教室教务管理系统</title>
 </head>
 <body bgcolor="#D9DFAA">
-	<s:property value="#session.dl.name"/>，您好，欢迎光临教师教务系统<a href="logout.action">【注销】</a><br><br>
+	<s:property value="#session.dl.name"/>，您好，欢迎光临教师教务系统【<a href="logout.action">注销</a>】<br><br>
 	学生信息管理<br>
 	<ol type="1" start="1">
        <%--<s:property value="#session.dl.role"/>--%>

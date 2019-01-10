@@ -25,7 +25,7 @@ public class XsServiceManage implements XsService {
 	/* ҵ��ʵ�֣�ɾ��ĳѧ����Ϣ */
 	public void delete(String xh){
 		xsDao.delete(xh);
-		cjDao.deleteOneXsCj(xh);			//ɾ��ѧ����ͬʱҪɾ��������Ӧ�ĳɼ�
+					//ɾ��ѧ����ͬʱҪɾ��������Ӧ�ĳɼ�
 	}
 	
 	/* ҵ��ʵ�֣��޸�ĳѧ����Ϣ */

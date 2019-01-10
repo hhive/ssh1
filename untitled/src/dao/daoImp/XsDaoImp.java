@@ -46,7 +46,7 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 			Query query=session.createQuery("from Xsb where xh= '" + xh + "'");
 			Xsb xs=(Xsb)query.uniqueResult();
 			ts.commit();
-			session.clear();
+			session.close();
 			return xs;
 		}catch(Exception e){
 			e.printStackTrace();

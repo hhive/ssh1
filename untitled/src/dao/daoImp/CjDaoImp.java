@@ -22,6 +22,7 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 		return (Cjb)session.get(Cjb.class, cjbPk);
 	}
 	public void saveorupdateCj(Cjb cj){
+		System.out.println("saveorupdateCj");
 		Session session=getSession();
 		Transaction ts=session.beginTransaction();
 		session.saveOrUpdate(cj);
@@ -79,11 +80,27 @@ public class CjDaoImp extends BaseDAO implements CjDao {
 			e.printStackTrace();
 		}
 	}
-	public void deleteOneXsCj(String xh){
+	public boolean deleteCjByKch(String kch){
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
-			session.delete(getXsCjList(xh));
+			String hql = "delete from Cjb where id.kch='" + kch + "'";
+			session.createQuery(hql).executeUpdate();
+			ts.commit();
+			session.close();
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public void deleteOneXsCj(String xh){
+		try{
+			System.out.println("deleteOneXsCj:" + xh);
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			String hql = "delete from Cjb where id.xh='" + xh + "'";
+			session.createQuery(hql).executeUpdate();
 			ts.commit();
 			session.close();
 		}catch(Exception e){

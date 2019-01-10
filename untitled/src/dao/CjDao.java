@@ -20,4 +20,5 @@ public interface CjDao {
 	/* ������ɾ��ѧ���ɼ� */
 	public void deleteCj(String xh, String kch);		//����ѧ�źͿγ̺�ɾ��ѧ���ɼ�
 	public void deleteOneXsCj(String xh);				//ɾ��ĳѧ���ĳɼ�����ɾ��������Ϣʱ��Ӧɾ����
+	public boolean deleteCjByKch(String kch);
 }

@@ -35,7 +35,7 @@
 				</td>
 			</tr>
 			<tr>
-				<s:textfield label="成绩" name="cj.cj" size="15"/>
+				<s:textfield label="成绩" name="cj.cj" size="15" />
 			</tr>
 		</table>
 		<input type="submit" value="确定"/>

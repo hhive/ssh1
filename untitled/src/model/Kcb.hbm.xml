@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.Kcb" table="Kcb" schema="xscjgl">
+    <class name="model.Kcb" table="Kcb" schema="teachermanager">
         <id name="kch">
             <column name="kch" sql-type="char(3)" length="3"/>
         </id>
@@ -38,13 +38,13 @@
         <many-to-one name="dlb"
                      column="tno"
                      class="model.Dlb"
-                     cascade="all"
+                     cascade="save-update"
                      fetch="join"
                      lazy="false"/>
         <many-to-one name="zyb"
                      column="zy_id"
                      class="model.Zyb"
-                     cascade="all"
+                     cascade="save-update"
                      fetch="join"
                      lazy="false"/>
     </class>

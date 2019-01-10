@@ -3,6 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionContext;
 import model.Dlb;
 import model.Kcb;
+import service.CjService;
 import service.DlService;
 import service.KcService;
 import service.ZyService;
@@ -22,9 +23,27 @@ public class KcAction {
     private int pageSize = 8;
     private Kcb kc;
     private KcService kcService;
+    List zys;
+
+    public List getZys() {
+        return zys;
+    }
+
+    public void setZys(List zys) {
+        this.zys = zys;
+    }
+
+    public void setCjService(CjService cjService) {
+        this.cjService = cjService;
+    }
+
+    public CjService getCjService() {
+        return cjService;
+    }
+
     private ZyService zyService;
     private DlService dlService;
-
+    private CjService cjService;
     private List list;
     private String message;
 
@@ -32,8 +51,8 @@ public class KcAction {
         Map session=ActionContext.getContext().getSession();
         Dlb dlb = (Dlb)session.get("dl");
         List list=kcService.findAll(pageNow,pageSize,dlb);
-        Kcb temp = (Kcb)list.get(0);
-        System.out.println("list" + temp.getZyb().getZym());
+       // Kcb temp = (Kcb)list.get(0);
+      //  System.out.println("list" + temp.getZyb().getZym());
         Map request=(Map) ActionContext.getContext().get("request");
         Pager page=new Pager(getPageNow(),kcService.findKcSize(dlb));
         System.out.println(page.getTotalPage());
@@ -50,14 +69,16 @@ public class KcAction {
         Iterator it = list.iterator();
         while (it.hasNext()) {
             Kcb k = (Kcb) it.next();
-            if (kc.getZyb().getId() == k.getZyb().getId()
-                    && kc.getWeekBegin() >= k.getWeekBegin()
-                    && kc.getWeekBegin() <= k.getWeekEnd()) {
-                if (kc.getWeekDay() == (k.getWeekDay())) {
-                    if (kc.getLesson() == (k.getLesson())) {
-                        System.out.println("时间安排冲突！");
-                        message = "时间安排冲突！";
-                        return false;
+            if (!kc.getKch().equals(k.getKch())) {
+                if (kc.getZyb().getId() == k.getZyb().getId()
+                        && kc.getWeekBegin() >= k.getWeekBegin()
+                        && kc.getWeekBegin() <= k.getWeekEnd()) {
+                    if (kc.getWeekDay() == (k.getWeekDay())) {
+                        if (kc.getLesson() == (k.getLesson())) {
+                            System.out.println("时间安排冲突！");
+                            message = "时间安排冲突！";
+                            return false;
+                        }
                     }
                 }
             }
@@ -94,21 +115,23 @@ public class KcAction {
     public String findOneKc() throws Exception{
         String kch=kc.getKch();
         kc = kcService.find(kch);
-        List zys=zyService.getAll();
-        Map request=(Map)ActionContext.getContext().get("request");
-        request.put("zys", zys);
+        zys=zyService.getAll();
+//        Map request=(Map)ActionContext.getContext().get("request");
+//        request.put("zys", zys);
+        message = null;
         return SUCCESS;
     }
 
     public String deleteKc() throws Exception{
         String kch=kc.getKch();
-        if(kcService.delete(kch)) {
-            message = "删除成功！";
-            return SUCCESS;
-        } else {
-            message = "删除失败！";
-            return ERROR;
+        if(cjService.deleteCjByKch(kch)) {
+            if (kcService.delete(kch)) {
+                message = "删除成功！";
+                return SUCCESS;
+            }
         }
+        message = "删除失败！";
+        return ERROR;
 
     }
 

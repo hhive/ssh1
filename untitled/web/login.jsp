@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-	<title>学生成绩管理系统</title>
+	<title>教师教务管理系统</title>
 </head>
 <body bgcolor="#D9DFAA">
 <s:form action="login" method="post" theme="simple">

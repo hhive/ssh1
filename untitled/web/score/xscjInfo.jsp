@@ -42,6 +42,6 @@
 			</s:if>
 		</tr>
 	</table>
-	<input type="button" value="返回" onClick="javaScript:history.back()"/>
+	<input type="button" value="返回" onClick="location.href='main.jsp'"/>
 </body>
 </html>

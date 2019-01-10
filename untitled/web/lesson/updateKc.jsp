@@ -36,7 +36,7 @@
         <td width="80">专业：</td>
         <td>
             <select name="xs.zyb.id">
-                <s:iterator value="#request.zys" id="zy">
+                <s:iterator value="zys" id="zy">
                     <option value="<s:property value="#zy.id"/>">
                         <s:property value="#zy.zym"/>
                     </option>

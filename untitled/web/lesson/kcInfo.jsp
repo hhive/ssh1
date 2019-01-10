@@ -20,10 +20,10 @@
             <td>星期<s:property value="#kc.weekDay"/>&nbsp;第<s:property value="#kc.lesson"/>节</td>
             <td><s:property value="#kc.destination"/></td>
             <td>
-                <a href="deleteKc.action?kc.kch=<s:property value="#kc.kch"/>" onClick="if(!confirm('确定删除该生信息吗？'))return false;else return true;">删除</a>
+                <a href="deleteKc.action?kc.kch=<s:property value="#kc.kch"/>" onClick="if(!confirm('确定删除该课程信息吗？'))return false;else return true;">删除</a>
             </td>
             <td>
-                <a href="findOneKc.action?kc.kch=<s:property value="#kc.kch"/>">修改</a>
+                <a href="findOneKc.action?kc.kch=<s:property value="#kc.kch"/>"&message="">修改</a>
             </td>
         </tr>
     </s:iterator>
@@ -33,19 +33,19 @@
             总页数：<s:property value="#page.totalPage"/>&nbsp;
         </s:if>
         <s:if test="#page.hasFirst">
-            <s:a href="xsInfo.action?pageNow=1">首页</s:a>&nbsp;
+            <s:a href="kcInfo.action?pageNow=1">首页</s:a>&nbsp;
         </s:if>
         <s:if test="#page.hasPre">
-            <a href="xsInfo.action?pageNow=<s:property value="#page.pageNow-1"/>">上一页</a>&nbsp;
+            <a href="kcInfo.action?pageNow=<s:property value="#page.pageNow-1"/>">上一页</a>&nbsp;
         </s:if>
         <s:if test="#page.hasNext">
-            <a href="xsInfo.action?pageNow=<s:property value="#page.pageNow+1"/>">下一页</a>&nbsp;
+            <a href="kcInfo.action?pageNow=<s:property value="#page.pageNow+1"/>">下一页</a>&nbsp;
         </s:if>
         <s:if test="#page.hasLast">
-            <a href="xsInfo.action?pageNow=<s:property value="#page.totalPage"/>">尾页</a>
+            <a href="kcInfo.action?pageNow=<s:property value="#page.totalPage"/>">尾页</a>
         </s:if>
     </tr>
 </table>
-<input type="button" value="返回" onClick="javaScript:history.back()"/>
+<input type="button" value="返回" onClick="location.href='main.jsp'"/>
 </body>
 </html>

@@ -72,6 +72,7 @@
     <bean id="xs" class="action.XsAction">
         <property name="xsService" ref="xsService"/>
         <property name="zyService" ref="zyService"/>
+        <property name="cjService" ref="cjService"/>
     </bean>
 
     <bean id="kcDao" class="dao.daoImp.KcDaoImp" parent="baseDAO"/>
@@ -80,15 +81,15 @@
         <property name="kcDao" ref="kcDao"/>
     </bean>
 
-    <bean id="kc" class="action.KcAction">
-        <property name="kcService" ref="kcService"/>
-        <property name="zyService" ref="zyService"/>
-    </bean>
-
     <bean id="cjService" class="service.serviceImp.CjServiceManage">
         <property name="cjDao" ref="cjDao"/>
     </bean>
 
+    <bean id="kc" class="action.KcAction">
+        <property name="kcService" ref="kcService"/>
+        <property name="zyService" ref="zyService"/>
+        <property name="cjService" ref="cjService"/>
+    </bean>
     <bean id="cj" class="action.CjAction">
         <property name="xsService" ref="xsService"/>
         <property name="kcService" ref="kcService"/>

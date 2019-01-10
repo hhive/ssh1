@@ -33,6 +33,7 @@ public class KcServiceManage implements KcService {
 	public void setKcDao(KcDao kcDao){
 		this.kcDao = kcDao;
 	}
+	
 	public boolean delete(String kch) {
 		if (kcDao.delete(kch)) {
 			return true;

@@ -42,7 +42,11 @@ public class CjAction extends ActionSupport{
 			cj1 = cjService.getXsCj(cj.getId().getXh(), cj.getId().getKch());
 		}
 		Kcb kc1=kcService.find(cj.getId().getKch());
+		if (cj.getCj() == null) {
+			return ERROR;
+		}
 		cj1.setCj(cj.getCj());
+
 		if(cj.getCj()>60||cj.getCj()==60){
 			cj1.setXf(kc1.getXf());
 		}else
@@ -107,8 +111,7 @@ public class CjAction extends ActionSupport{
 	public void setCjService(CjService cjService){
 		this.cjService = cjService;
 	}
-	
-	/* Action ģ�飺ѧ���ɼ���ѯ */
+
 	public int getPageNow(){
 		return pageNow;
 	}

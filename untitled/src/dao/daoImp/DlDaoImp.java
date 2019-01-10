@@ -22,6 +22,7 @@ public class DlDaoImp extends BaseDAO implements DlDao {
 		while(it.hasNext()){
 			if(users.size()!=0){
 				Dlb user=(Dlb)it.next();	//�����־û��� JavaBean ���� user
+				session.close();
 				return user;
 			}
 		}
