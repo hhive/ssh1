@@ -13,6 +13,22 @@
         <action name="logout" class="dl" method="logout">
             <result name="success">login.jsp</result>
         </action>
+        <action name="showUserList" class="dl" method="showUserList">
+            <result name="success">/teacher/userInfo.jsp</result>
+        </action>
+        <action name="addUser" class="dl" method="addUser">
+            <result name="success">/teacher/addUserInfo.jsp</result>
+        </action>
+        <action name="updateUserView" class="dl" method="updateUserView">
+            <result name="success">/teacher/updateUserView.jsp</result>
+        </action>
+        <action name="updateUser" class="dl" method="updateUser">
+            <result name="success" type="redirectAction">showUserList</result>
+            <result name="error" type="redirectAction">updateUserView</result>
+        </action>
+        <action name="deleteUser" class="dl" method="deleteUser">
+            <result name="success" type="redirectAction">showUserList</result>
+        </action>
         <action name="xsInfo" class="xs">
             <result name="success" >/student/xsInfo.jsp</result>
         </action>

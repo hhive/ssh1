@@ -107,7 +107,6 @@ public class KcAction {
     }
 
     public String addKc() throws Exception{
-
         kc.setZyb(zyService.getOneZy(kc.getZyb().getId()));
         Map session = ActionContext.getContext().getSession();
         Dlb dlb = (Dlb)session.get("dl");
@@ -163,7 +162,10 @@ public class KcAction {
         System.out.println("update:" + kc.getStatus());
         Map session = ActionContext.getContext().getSession();
         Dlb dlb = (Dlb)session.get("dl");
-        kc.setDlb(dlb);
+        if (!dlb.getRole().equals("sa")) {
+
+            kc.setDlb(dlb);
+        }
         if (isLesson(kc)) {
             kcService.saveOrUpdate(kc);
             message = "修改成功！";

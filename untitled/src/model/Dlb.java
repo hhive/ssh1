@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 public class Dlb {
-    private int id;
+    private String id;
     private String password;
     private String name;
     private String role;
@@ -18,7 +18,7 @@ public class Dlb {
     public Dlb() {
     }
 
-    public Dlb(int id, String password, String name, String role, String age, int sex) {
+    public Dlb(String  id, String password, String name, String role, String age, int sex) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -29,11 +29,11 @@ public class Dlb {
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

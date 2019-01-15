@@ -92,4 +92,8 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 			e.printStackTrace();
 		}
 	}
+
+	public void fuzzyQuery(String value) {
+
+	}
 }

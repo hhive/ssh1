@@ -11,16 +11,25 @@
        <%--<s:property value="#session.dl.role"/>--%>
         <s:if test="#session.dl.role == 'teacher'">
             <li><a href="xsInfo.action">学生信息查询</a> </li>
+
         </s:if>
         <s:else>
             <li><a href="addXsView.action">学生信息录入</a> </li>
             <li><a href="xsInfo.action">学生信息查询</a> </li>
+			<li><a href="/teacher/addUserInfo.jsp">教师信息录入</a></li>
+			<li><a href="showUserList.action">教师信息查询</a> </li>
         </s:else>
 	</ol>
 	课程信息管理<br>
 	<ol type="1" start="1">
-		<li><a href="addKcView.action?message=<s:property value=""/>">课程信息录入</a> </li>
-		<li><a href="kcInfo.action">课程信息查询</a> </li>
+		<s:if test="#session.dl.role == 'teacher'">
+			<li><a href="addKcView.action?message=<s:property value=""/>">课程信息录入</a> </li>
+			<li><a href="kcInfo.action">课程信息查询</a> </li>
+		</s:if>
+		<s:else>
+			<li><a href="kcInfo.action">课程信息查询</a> </li>
+		</s:else>
+
 	</ol>
 	成绩信息管理<br>
 	<ol type="1" start="1">

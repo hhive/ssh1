@@ -21,4 +21,5 @@ public interface XsDao {
 	
 	/* ������ѧ����Ϣ¼�� */
 	public void save(Xsb xs);							//����ѧ��
+	public void fuzzyQuery(String value);
 }
