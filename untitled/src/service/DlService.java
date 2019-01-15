@@ -13,10 +13,10 @@ public interface DlService {
 
 	public Dlb find(String id, String password);
 
-	public void delete(String id);
+	public boolean delete(String id);
 
-	public void update(Dlb dlb);
+	public boolean update(Dlb dlb);
 
-	public void save(Dlb dlb);
+	public boolean save(Dlb dlb);
 	public Dlb getOne(String id);
 }

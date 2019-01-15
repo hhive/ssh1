@@ -1,11 +1,39 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
-<head></head>
-<body bgcolor="#D9DFAA">
+<head>
+	<title></title>
+	<style type="text/css">
+		table {
+			background-color: white;
+			border-color: grey;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 9px 15px;
+			min-height: 20px;
+			line-height: 20px;
+			border: 1px solid #e2e2e2;
+			font-size: 14px;
+		}
+		.kk {
+			font-size: 13px;
+			text-align: center;
+			display: inline-block;
+			width: 190px;
+			height: 45px;
+			margin: 10px 0px;
+			color: white;
+			background-color: #56baed;
+			border: none;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
 	<s:set name="xs" value="#request.xsInfo"></s:set>
 	<s:form action="updateXs" method="post" enctype="multipart/form-data">
-		<table border="0" cellspacing="1" cellpadding="8" width="500">
+		<table width="500">
 			<tr>
 				<td width="80">学号：</td>
 				<td>
@@ -38,7 +66,7 @@
 			<tr>
 				<td width="80">出生时间：</td>
 				<td>
-					<input type="text" name="xs.cssj" value="<s:property value="#xs.cssj"/>"/>
+					<input type="date" name="xs.cssj" value="<s:property value="#xs.cssj"/>"/>
 				</td>
 			</tr>
 			<tr>
@@ -60,9 +88,9 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="修改"/>
+		<input type="submit" value="修改" class="kk"/>
 		<!-- 返回上一界面 -->
-		<input type="button" value="返回" onclick="javascript:history.back();"/>
+		<input type="button" value="返回" class="kk" onclick="javascript:history.back();"/>
 	</s:form>
 	<!-- 这里用 JavaScript 来实现根据该学生的专业 ID 来显示专业名 -->
 	<script type="text/javascript">

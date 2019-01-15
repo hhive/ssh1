@@ -1,12 +1,44 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
-<head></head>
-<body bgcolor="#D9DFAA">
+<head>
+	<title></title>
+	<style type="text/css">
+		h3 {
+			font-size: 20px;
+			font-weight: 300;
+		}
+		table {
+			background-color: white;
+			border-color: grey;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 9px 15px;
+			min-height: 20px;
+			line-height: 20px;
+			border: 1px solid #e2e2e2;
+			font-size: 14px;
+		}
+		input[type=submit] {
+			font-size: 13px;
+			text-align: center;
+			display: block;
+			width: 190px;
+			height: 45px;
+			margin: 10px 0px;
+			color: white;
+			background-color: #56baed;
+			border: none;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body >
 	<h3>该学生信息如下：</h3>
 	<s:set name="xs" value="#request.xs"></s:set>
-	<s:form action="xsInfo" method="post">
-		<table border="0" cellpadding="5">
+	<s:form action="xsInfo" method="post" theme="simple">
+		<table >
 			<tr>
 				<td>学号：</td>
 				<td width="100">
@@ -54,7 +86,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right">
+				<td align="left" colspan="3">
 					<s:submit value="返回"/>
 				</td>
 			</tr>

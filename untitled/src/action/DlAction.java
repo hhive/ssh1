@@ -20,6 +20,7 @@ public class DlAction extends ActionSupport{
 	private int pageNow = 1;
 	private int pageSize = 8;
 	private List list;
+	private String message;
 
 	public String execute() throws Exception{
 		boolean validated=false;
@@ -69,8 +70,12 @@ public class DlAction extends ActionSupport{
 	}
 
 	public String deleteUser() throws Exception{
-		dlService.delete(dl.getId());
-		return SUCCESS;
+		if(dlService.delete(dl.getId())) {
+			message = "添加成功！";
+			return SUCCESS;
+		}
+		message = "添加失败！";
+		return ERROR;
 	}
 
 
@@ -81,8 +86,10 @@ public class DlAction extends ActionSupport{
 		return SUCCESS;
 	}
 	public String updateUser() throws Exception{
-		dlService.update(dl);
-		return SUCCESS;
+		if(dlService.update(dl)) {
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 
 
@@ -93,8 +100,12 @@ public class DlAction extends ActionSupport{
 	public String addUser() throws Exception{
 		System.out.println("addXs()");
 
-		dlService.save(dl);
-		return SUCCESS;
+		if(dlService.save(dl)) {
+			message = "添加成功！";
+			return SUCCESS;
+		}
+		message = "添加失败！";
+		return ERROR;
 	}
 	public String logout() {
 		Map session = ActionContext.getContext().getSession();
@@ -135,5 +146,13 @@ public class DlAction extends ActionSupport{
 	}
 	public void setDlService(DlService dlService){
 		this.dlService = dlService;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

@@ -22,18 +22,26 @@ public class DlServiceManage implements DlService {
 	}
 
 
-	public void delete(String id){
-		dlDao.delete(id);
+	public boolean delete(String id){
+		if(dlDao.delete(id)) {
+			return true;
+		}
+		return false;
 	}
 
 
-	public void update(Dlb dlb){
-		dlDao.update(dlb);
+	public boolean update(Dlb dlb){
+		if(dlDao.update(dlb)) {
+			return true;
+		}
+		return false;
 	}
 
-
-	public void save(Dlb dlb){
-		dlDao.save(dlb);
+	public boolean save(Dlb dlb){
+		if(dlDao.save(dlb)) {
+			return true;
+		}
+		return false;
 	}
 	public Dlb getOne(String id){
 		return dlDao.getOne(id);

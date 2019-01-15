@@ -61,21 +61,24 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 
 	//添加课程
 	public boolean saveOrUpdate(Kcb kc){
+		Session session=getSession();
 		try{
-			Session session=getSession();
+
 			Transaction ts=session.beginTransaction();
 			session.saveOrUpdate(kc);
 			ts.commit();
 			session.close();
 			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
 			return false;
 		}
 	}
 	public boolean delete(String kch){
+		Session session=getSession();
 		try{
-			Session session=getSession();
+
 			Transaction ts=session.beginTransaction();
 			Kcb kcb=find(kch);
 			session.delete(kcb);
@@ -83,20 +86,23 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 			session.close();
 			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
 			return false;
 		}
 	}
 
 	public boolean updateKcStatus(String kch, String status) {
+		Session session=getSession();
 		try{
-			Session session=getSession();
+
 			Transaction ts=session.beginTransaction();
 			session.createQuery("update Kcb set status='" + status + "' where kch='" + kch + "'").executeUpdate();
 			ts.commit();
 			session.close();
 			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
 			return false;
 		}

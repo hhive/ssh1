@@ -2,14 +2,29 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
+    <style type="text/css">
+        table {
+            background-color: white;
+            border-color: grey;
+            border-collapse: collapse;
+
+        }
+        th, td {
+            padding: 9px 15px;
+            min-height: 20px;
+            line-height: 20px;
+            border: 1px solid #e2e2e2;
+            font-size: 14px;
+        }
+    </style>
 </head>
-<body bgcolor="#D9DFAA">
+<body >
 <form action="fuzzyQuery.action" method="post">
     <input type="text" name="value">
     <input type="submit" value="搜索">
 </form>
-<table border="1" cellspacing="1" cellpadding="8" width="700">
-    <tr align="center" bgcolor="silver">
+<table  width="700">
+    <tr align="center" bgcolor="#f2f2f2">
         <th>学号</th><th>姓名</th><th>性别</th><th>专业</th><th>出生时间</th><th>总学分</th><th>详细信息</th><th>操作</th><th>操作</th>
     </tr>
     <s:iterator value="#request.list" id="xs">
@@ -35,6 +50,7 @@
         </tr>
     </s:iterator>
     <tr>
+        <td colspan="9" style="font-size: 20px;font-weight: 300">
         <s:set name="page" value="#request.page"></s:set>
         <s:if test="#page.totalPage">
             总页数：<s:property value="#page.totalPage"/>&nbsp;
@@ -51,8 +67,8 @@
         <s:if test="#page.hasLast">
             <a href="fuzzyQuery.action?pageNow=<s:property value="#page.totalPage"/>&value=<s:property value="value"/>">尾页</a>
         </s:if>
+        </td>
     </tr>
 </table>
-<input type="button" value="返回" onClick="location.href='main.jsp'"/>
 </body>
 </html>

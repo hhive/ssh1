@@ -25,6 +25,7 @@ public class 	XsAction extends ActionSupport{
 	private ZyService zyService;
 	private File zpFile;
     private String value;
+    private String message;
     public void setCjService(CjService cjService) {
         this.cjService = cjService;
     }
@@ -116,6 +117,7 @@ public class 	XsAction extends ActionSupport{
 		String xh1=xs.getXh();
 
 		if(xsService.find(xh1)!=null){
+			message = "添加失败！";
 			return ERROR;
 		}
 		stu.setXh(xs.getXh());
@@ -132,8 +134,10 @@ public class 	XsAction extends ActionSupport{
 			stu.setZp(buffer);
 		}
 		if(!xsService.save(stu)) {
+			message = "添加失败！";
 		    return ERROR;
         }
+		message = "添加成功！";
 		return SUCCESS;
 	}
 
@@ -208,5 +212,13 @@ public class 	XsAction extends ActionSupport{
 	}
 	public void setPageSize(int pageSize){
 		this.pageSize = pageSize;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

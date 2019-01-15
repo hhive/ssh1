@@ -91,40 +91,51 @@ public class DlDaoImp extends BaseDAO implements DlDao {
 		}
 	}
 
-	public void delete(String id){
+	public boolean delete(String id){
+		Session session=getSession();
 		try{
-			Session session=getSession();
+
 			Transaction ts=session.beginTransaction();
 			Dlb dlb=find(id);
 			session.delete(dlb);
 			ts.commit();
 			session.close();
+			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void update(Dlb dlb){
+	public boolean update(Dlb dlb){
+		Session session=getSession();
 		try{
-			Session session=getSession();
+
 			Transaction ts=session.beginTransaction();
 			session.update(dlb);
 			ts.commit();
 			session.close();
+			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void save(Dlb dlb){
+	public boolean save(Dlb dlb){
+		Session session=getSession();;
 		try{
-			Session session=getSession();
 			Transaction ts=session.beginTransaction();
 			session.save(dlb);
 			ts.commit();
 			session.close();
+			return true;
 		}catch(Exception e){
+			session.close();
 			e.printStackTrace();
+			return false;
 		}
 	}
 }

@@ -2,20 +2,25 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-	<div id="divMenuBar">
-	</div>
-	<script language="JavaScript">
-        $(document).ready(function () {
-            var $divMenuBar = $("#divMenuBar");
-            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
-            });
-        });
-	</script>
+	<style type="text/css">
+		table {
+			background-color: white;
+			border-color: grey;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 9px 15px;
+			min-height: 20px;
+			line-height: 20px;
+			border: 1px solid #e2e2e2;
+			font-size: 14px;
+		}
+	</style>
 </head>
 
-<body bgcolor="#D9DFAA">
-	<table border="1" cellspacing="1" cellpadding="8" width="700">
-		<tr align="center" bgcolor="silver">
+<body>
+	<table width="700">
+		<tr align="center" bgcolor="#f2f2f2">
 			<th>工号</th><th>姓名</th><th>性别</th><th>年龄</th><th>操作</th><th>操作</th>
 		</tr>
 		<s:iterator value="#request.list" id="dl">
@@ -23,7 +28,7 @@
 			<td><s:property value="#dl.id"/></td>
 			<td><s:property value="#dl.name"/></td>
 			<td>
-				<s:if test='#dl.xb=="1"'>男</s:if>
+				<s:if test='#dl.sex=="1"'>男</s:if>
 				<s:else>女</s:else>
 			</td>
 			<td><s:property value="#dl.age"/></td>
@@ -54,13 +59,5 @@
 			</s:if>
 		</tr>
 	</table>
-		<input type="button" value="返回" onClick="location.href='main.jsp'"/>
-	<script language="JavaScript">
-        $(document).ready(function () {
-            var $divMenuBar = $("#divMenuBar");
-            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
-            });
-        });
-	</script>
 </body>
 </html>

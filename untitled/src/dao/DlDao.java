@@ -13,11 +13,11 @@ public interface DlDao {
 	public int findXsSize();						
 
 
-	public void delete(String xh);			
+	public boolean delete(String xh);
 
 
-	public void update(Dlb dlb);							
+	public boolean update(Dlb dlb);
 
 
-	public void save(Dlb dlb);						
+	public boolean save(Dlb dlb);
 }

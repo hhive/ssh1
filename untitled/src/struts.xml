@@ -7,20 +7,24 @@
 <struts>
     <package name="default" extends="struts-default">
         <action name="login" class="dl">
-            <result name="success">main.jsp</result>
+            <result name="success">index.jsp</result>
             <result name="error">error.jsp</result>
         </action>
         <action name="logout" class="dl" method="logout">
             <result name="success">login.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="showUserList" class="dl" method="showUserList">
             <result name="success">/teacher/userInfo.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addUser" class="dl" method="addUser">
             <result name="success">/teacher/addUserInfo.jsp</result>
+            <result name="error">/teacher/addUserInfo.jsp</result>
         </action>
         <action name="updateUserView" class="dl" method="updateUserView">
             <result name="success">/teacher/updateUserView.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="updateUser" class="dl" method="updateUser">
             <result name="success" type="redirectAction">showUserList</result>
@@ -28,33 +32,41 @@
         </action>
         <action name="deleteUser" class="dl" method="deleteUser">
             <result name="success" type="redirectAction">showUserList</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="xsInfo" class="xs">
             <result name="success" >/student/xsInfo.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <!-- 查看某学生详细信息 -->
         <action name="findXs" class="xs" method="findXs">
             <result name="success">/student/moretail.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="getImage" class="xs" method="getImage"/>
         <action name="deleteXs" class="xs" method="deleteXs">
-            <result name="success">/success.jsp</result>
+            <result name="success" type="redirectAction">xsInfo</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="updateXsView" class="xs" method="updateXsView">
             <result name="success">/student/updateXsView.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="updateXs" class="xs" method="updateXs">
-            <result name="success">/success.jsp</result>
+            <result name="success" type="redirectAction">xsInfo</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addXsView" class="xs" method="addXsView">
             <result name="success">/student/addXsInfo.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addXs" class="xs" method="addXs">
             <result name="success">/success.jsp</result>
-            <result name="error">/student/existXs.jsp</result>
+            <result name="error">/success.jsp</result>
         </action>
         <action name="addXscjView" class="cj">
             <result name="success">/score/addCj.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addorupdateXscj" class="cj" method="addorupdateXscj">
             <result name="success">/success.jsp</result>
@@ -62,10 +74,12 @@
         </action>
         <action name="fuzzyQuery" class="xs" method="fuzzyQuery">
             <result name="success">/student/searchStudent.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <!-- 显示所有学生成绩 -->
         <action name="xscjInfo" class="cj" method="xscjInfo">
             <result name="success">/score/xscjInfo.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <!-- 查看某个学生的成绩表 -->
         <action name="findXscj" class="cj" method="findXscj">
@@ -75,13 +89,16 @@
         <!-- 删除学生成绩 -->
         <action name="deleteOneXscj" class="cj" method="deleteOneXscj">
             <result name="success">/success.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <!--显示所有课程 -->
         <action name="kcInfo" class="kc">
             <result name="success">/lesson/kcInfo.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addKcView" class="kc" method="addKcView">
             <result name="success">/lesson/addKc.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="addKc" class="kc" method="addKc">
             <result name="success" type="redirectAction">kcInfo</result>
@@ -97,9 +114,11 @@
         </action>
         <action name="deleteKc" class="kc" method="deleteKc">
             <result name="success" type="redirectAction">kcInfo</result>
+            <result name="error">operateError.jsp</result>
         </action>
         <action name="findOneKc" class="kc" method="findOneKc">
             <result name="success">/lesson/updateKc.jsp</result>
+            <result name="error">operateError.jsp</result>
         </action>
     </package>
 </struts>
