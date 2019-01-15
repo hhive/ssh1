@@ -1,18 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
-<head>
-	<script language="JavaScript">
-        $(document).ready(function () {
-            var $divMenuBar = $("#divMenuBar");
-            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
-            });
-        });
-	</script>
+
 </head>
-<div id="divMenuBar">
-</div>
 <body bgcolor="#D9DFAA">
+	<form action="fuzzyQuery.action" method="post">
+		<input type="text" name="value">
+		<input type="submit" value="搜索">
+	</form>
 	<table border="1" cellspacing="1" cellpadding="8" width="700">
 		<tr align="center" bgcolor="silver">
 			<th>学号</th><th>姓名</th><th>性别</th><th>专业</th><th>出生时间</th><th>总学分</th><th>详细信息</th><th>操作</th><th>操作</th>
@@ -59,12 +54,5 @@
 		</tr>
 	</table>
 		<input type="button" value="返回" onClick="location.href='main.jsp'"/>
-	<script language="JavaScript">
-        $(document).ready(function () {
-            var $divMenuBar = $("#divMenuBar");
-            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
-            });
-        });
-	</script>
 </body>
 </html>

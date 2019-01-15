@@ -24,7 +24,7 @@ public class 	XsAction extends ActionSupport{
     private CjService cjService;
 	private ZyService zyService;
 	private File zpFile;
-
+    private String value;
     public void setCjService(CjService cjService) {
         this.cjService = cjService;
     }
@@ -131,11 +131,33 @@ public class 	XsAction extends ActionSupport{
 			fis.read(buffer);
 			stu.setZp(buffer);
 		}
-		xsService.save(stu);
+		if(!xsService.save(stu)) {
+		    return ERROR;
+        }
 		return SUCCESS;
 	}
-	
-	public Xsb getXs(){
+
+    public String fuzzyQuery() {
+        System.out.println("XsAction.execute()");
+        List list=xsService.fuzzyQuery(value, pageNow, pageSize);
+        Map request=(Map)ActionContext.getContext().get("request");
+        Pager page=new Pager(getPageNow(),xsService.fuzzyQuerySize(value, pageNow, pageSize));
+        System.out.println(page.getTotalPage());
+        ActionContext.getContext().put("page", page);
+        request.put("list", list);
+        request.put("page", page);
+        return SUCCESS;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Xsb getXs(){
 		return xs;
 	}
 	public void setXs(Xsb xs){

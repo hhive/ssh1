@@ -20,6 +20,8 @@ public interface XsDao {
 	public void update(Xsb xs);							//�޸�ѧ����Ϣ
 	
 	/* ������ѧ����Ϣ¼�� */
-	public void save(Xsb xs);							//����ѧ��
-	public void fuzzyQuery(String value);
+	public boolean save(Xsb xs);							//����ѧ��
+
+	public List fuzzyQuery(String value, int pageNow, int pageSize);
+	public int fuzzyQuerySize(String value, int pageNow, int pageSize);
 }

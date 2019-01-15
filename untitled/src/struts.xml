@@ -60,6 +60,9 @@
             <result name="success">/success.jsp</result>
             <result name="error">/score/addCj.jsp</result>
         </action>
+        <action name="fuzzyQuery" class="xs" method="fuzzyQuery">
+            <result name="success">/student/searchStudent.jsp</result>
+        </action>
         <!-- 显示所有学生成绩 -->
         <action name="xscjInfo" class="cj" method="xscjInfo">
             <result name="success">/score/xscjInfo.jsp</result>

@@ -26,7 +26,9 @@
 				<s:select name="xs.zyb.id"  list="list" listKey="id" listValue="zym" headerKey="0" headerValue="--请选择专业--" label="专业"/>
 			</tr>
 			<tr>
-				<s:textfield name="xs.cssj" label="出生时间" value=""/>
+				<td>出生日期：</td>
+				<td><input type="date" name="xs.cssj"></td>
+				<%--<s:textfield name="xs.cssj" label="出生时间" value=""/>--%>
 			</tr>
 			<tr>
 				<td>

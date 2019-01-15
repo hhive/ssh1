@@ -32,10 +32,19 @@ public class XsServiceManage implements XsService {
 	}
 	
 
-	public void save(Xsb xs){
-		xsDao.save(xs);
+	public boolean save(Xsb xs){
+		if(xsDao.save(xs)) {
+			return true;
+		}
+		return false;
 	}
-	
+
+	public List fuzzyQuery(String value, int pageNow, int pageSize) {
+		return xsDao.fuzzyQuery(value, pageNow, pageSize);
+	}
+	public int fuzzyQuerySize(String value, int pageNow, int pageSize) {
+		return xsDao.fuzzyQuerySize(value, pageNow, pageSize);
+	}
 	public XsDao getXsDao(){
 		return xsDao;
 	}

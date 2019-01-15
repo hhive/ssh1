@@ -18,5 +18,9 @@ public interface XsService {
 
 	public void update(Xsb xs);
 
-	public void save(Xsb xs);
+	public boolean save(Xsb xs);
+
+	public List fuzzyQuery(String value, int pageNow, int pageSize);
+
+	public int fuzzyQuerySize(String value, int pageNow, int pageSize);
 }

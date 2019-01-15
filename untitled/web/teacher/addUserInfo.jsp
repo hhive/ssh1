@@ -9,27 +9,27 @@
 		<table border="0" cellspacing="0" cellpadding="1">
 			<tr>
 				<td>
-					工号：<input name="dl.id"  value=""/>
+					工号：<input type="text" name="dl.id"  value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					密码：<input name="dl.password"  value=""/>
+					密码：<input type="password" name="dl.password"  value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					姓名：<input name="dl.name"  value=""/>
+					姓名：<input type="text"  name="dl.name"  value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					年龄：<input name="dl.age" value=""/>
+					年龄：<input type="text"  name="dl.age" value=""/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<s:radio name="dl.sex" value="1" list="#{1:'男',0:'女'}" label="性别"/>
+					性别：<input type="radio" value="1" list="#{1:'男',0:'女'}">
 				</td>
 			</tr>
 			<tr>

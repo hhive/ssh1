@@ -79,21 +79,49 @@ public class XsDaoImp extends BaseDAO implements XsDao {
 			e.printStackTrace();
 		}
 	}
-	
-	/* ʵ�֣�ѧ����Ϣ¼�� */
-	public void save(Xsb xs){
+
+	public boolean save(Xsb xs){
 		try{
 			Session session=getSession();
 			Transaction ts=session.beginTransaction();
 			session.save(xs);
 			ts.commit();
 			session.close();
+			return true;
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}
 	}
 
-	public void fuzzyQuery(String value) {
-
+	public List fuzzyQuery(String value, int pageNow, int pageSize) {
+		try{
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			Query query=session.createQuery("from Xsb where xh like '%" + value + "%' or xm like '%" + value + "%' order by xh");
+			int firstResult=(pageNow-1)*pageSize;
+			query.setFirstResult(firstResult);
+			query.setMaxResults(pageSize);
+			List list=query.list();
+			ts.commit();
+			session.close();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public int fuzzyQuerySize(String value, int pageNow, int pageSize) {
+		try{
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			int i = session.createQuery("from Xsb where xh like '%" + value + "%' or xm like '%" + value + "%' order by xh").list().size();
+			ts.commit();
+			session.close();
+			return i;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return  0;
 	}
 }

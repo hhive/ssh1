@@ -14,7 +14,7 @@
 </head>
 
 <body bgcolor="#D9DFAA">
-	<table border="1" cellspacing="1" cellpadding="8" width="700">s
+	<table border="1" cellspacing="1" cellpadding="8" width="700">
 		<tr align="center" bgcolor="silver">
 			<th>工号</th><th>姓名</th><th>性别</th><th>年龄</th><th>操作</th><th>操作</th>
 		</tr>
