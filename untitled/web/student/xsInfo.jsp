@@ -1,7 +1,17 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
-<head></head>
+<head>
+	<script language="JavaScript">
+        $(document).ready(function () {
+            var $divMenuBar = $("#divMenuBar");
+            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
+            });
+        });
+	</script>
+</head>
+<div id="divMenuBar">
+</div>
 <body bgcolor="#D9DFAA">
 	<table border="1" cellspacing="1" cellpadding="8" width="700">
 		<tr align="center" bgcolor="silver">
@@ -49,5 +59,12 @@
 		</tr>
 	</table>
 		<input type="button" value="返回" onClick="location.href='main.jsp'"/>
+	<script language="JavaScript">
+        $(document).ready(function () {
+            var $divMenuBar = $("#divMenuBar");
+            $divMenuBar.load("/fragment/menuBar.html #navMenuBar", function () {
+            });
+        });
+	</script>
 </body>
 </html>

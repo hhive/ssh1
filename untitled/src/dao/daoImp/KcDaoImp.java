@@ -88,4 +88,17 @@ public class KcDaoImp extends BaseDAO implements KcDao {
 		}
 	}
 
+	public boolean updateKcStatus(String kch, String status) {
+		try{
+			Session session=getSession();
+			Transaction ts=session.beginTransaction();
+			session.createQuery("update Kcb set status='" + status + "' where kch='" + kch + "'").executeUpdate();
+			ts.commit();
+			session.close();
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

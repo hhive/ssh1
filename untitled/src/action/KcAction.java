@@ -81,6 +81,15 @@ public class KcAction {
                         }
                     }
                 }
+                if (kc.getWeekDay() == (k.getWeekDay())) {
+                    if (kc.getLesson() == (k.getLesson())) {
+                        if(kc.getDestination().equals(k.getDestination())) {
+                            System.out.println("地点安排安排冲突！");
+                            message = "地点安排冲突！";
+                            return false;
+                        }
+                    }
+                }
             }
             if (kc.getWeekBegin() >= kc.getWeekEnd()) {
                 message = "结束周次不能小于或等于开始周次";
@@ -98,9 +107,13 @@ public class KcAction {
     }
 
     public String addKc() throws Exception{
+
         kc.setZyb(zyService.getOneZy(kc.getZyb().getId()));
         Map session = ActionContext.getContext().getSession();
         Dlb dlb = (Dlb)session.get("dl");
+//        if (dlb.getRole().equals("teacher")) {
+//
+//        }
         kc.setDlb(dlb);
         if (isLesson(kc)) {
             if (kcService.saveOrUpdate(kc)) {
@@ -146,6 +159,8 @@ public class KcAction {
 //        return SUCCESS;
 //    }
     public String updateKc() throws Exception{
+        kc.setZyb(zyService.getOneZy(kc.getZyb().getId()));
+        System.out.println("update:" + kc.getStatus());
         Map session = ActionContext.getContext().getSession();
         Dlb dlb = (Dlb)session.get("dl");
         kc.setDlb(dlb);
@@ -156,7 +171,12 @@ public class KcAction {
         }
         return ERROR;
     }
-
+    public String updateKcStatus() {
+        if (kcService.updateKcStatus(kc.getKch(), kc.getStatus())) {
+            return SUCCESS;
+        }
+        return ERROR;
+    }
     public Kcb getKc() {
         return kc;
     }

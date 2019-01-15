@@ -55,6 +55,11 @@
             <s:select name="kc.lesson" value="1" list="#{1:1,2:2,3:3,4:4,5:5}" label="节次"/>
         </td>
     </tr>
+    <%--<tr>--%>
+        <%--<td>--%>
+            <%--<input type="hidden" name="kc.dlb.id" value="<s:property value="##session.dl.id"/> ">--%>
+        <%--</td>--%>
+    <%--</tr>--%>
     <tr>
         <td>
             <s:textfield name="kc.destination" label="地点" value=""/>

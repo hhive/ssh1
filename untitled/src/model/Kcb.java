@@ -17,11 +17,9 @@ public class Kcb {
     private String destination;
     private Zyb zyb;
     private Dlb dlb;
+    private String status;
 
-    public Kcb() {
-    }
-
-    public Kcb(String kch, String kcm, int kxxq, Integer xs, Integer xf, int weekBegin, int weekEnd, int weekDay, int lesson, String destination, Zyb zyb, Dlb dlb) {
+    public Kcb(String kch, String kcm, int kxxq, Integer xs, Integer xf, int weekBegin, int weekEnd, int weekDay, int lesson, String destination, Zyb zyb, Dlb dlb, String status) {
         this.kch = kch;
         this.kcm = kcm;
         this.kxxq = kxxq;
@@ -34,6 +32,10 @@ public class Kcb {
         this.destination = destination;
         this.zyb = zyb;
         this.dlb = dlb;
+        this.status = status;
+    }
+
+    public Kcb() {
     }
 
     @Id
@@ -132,6 +134,16 @@ public class Kcb {
     @Column(name = "destination", nullable = false, length = 255)
     public String getDestination() {
         return destination;
+    }
+
+    @Basic
+    @Column(name = "status", nullable = false, length = 2)
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setDestination(String destination) {

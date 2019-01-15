@@ -11,4 +11,5 @@ public interface KcDao {
 	public Kcb find(String kch);							//���ݿγ̺Ų��ҿγ���Ϣ
 	public boolean saveOrUpdate(Kcb kc);
 	public boolean delete(String kch);
+	public boolean updateKcStatus(String kch, String status);
 }

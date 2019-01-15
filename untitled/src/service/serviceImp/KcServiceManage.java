@@ -40,5 +40,10 @@ public class KcServiceManage implements KcService {
 		}
 		return false;
 	}
-
+	public boolean updateKcStatus(String kch, String status) {
+		if (kcDao.updateKcStatus(kch, status)) {
+			return true;
+		}
+		return false;
+	}
 }

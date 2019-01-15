@@ -35,7 +35,7 @@
     <tr>
         <td width="80">专业：</td>
         <td>
-            <select name="xs.zyb.id">
+            <select name="kc.zyb.id">
                 <s:iterator value="zys" id="zy">
                     <option value="<s:property value="#zy.id"/>">
                         <s:property value="#zy.zym"/>
@@ -64,6 +64,11 @@
             <s:select name="kc.lesson" value="kc.lesson" list="#{1:1,2:2,3:3,4:4,5:5}" label="节次"/>
         </td>
     </tr>
+    <%--<tr>--%>
+        <%--<td>--%>
+            <%--<input type="hidden" name="kc.dlb.name" value="<s:property value="##session.dl.name"/> ">--%>
+        <%--</td>--%>
+    <%--</tr>--%>
     <tr>
         <td>
             地点：<input name="kc.destination" value="<s:property value="kc.destination"/>"/>

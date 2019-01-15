@@ -13,4 +13,5 @@ public interface KcService {
 	public Kcb find(String kch);							//���ݿγ̺Ų��ҿγ���Ϣ
 	public boolean saveOrUpdate(Kcb cb);
 	public boolean delete(String kch);
+	public boolean updateKcStatus(String kch, String status);
 }

@@ -72,6 +72,10 @@
             <result name="success" type="redirectAction">kcInfo</result>
             <result name="error">/lesson/updateKc.jsp</result>
         </action>
+        <action name="updateKcStatus" class="kc" method="updateKcStatus">
+            <result name="success" type="redirectAction">kcInfo</result>
+            <result name="error">error.jsp</result>
+        </action>
         <action name="deleteKc" class="kc" method="deleteKc">
             <result name="success" type="redirectAction">kcInfo</result>
         </action>
